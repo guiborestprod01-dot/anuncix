@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seu raio-x — Anuncix</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230f3d3e'/><path d='M8 16.5l5 5 11-12' stroke='%23f2b33d' stroke-width='3.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<style>
+:root{--ink:#0f1f20;--muted:#5b6b6c;--bg:#f7f5f0;--card:#fff;--brand:#0f3d3e;--brand2:#14595a;--accent:#f2b33d;--red:#c2410c;--amber:#8a5a00;--green:#15803d;--line:#e4e0d6}
+*{box-sizing:border-box}
+body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+a{color:var(--brand2)}
+.wrap{max-width:960px;margin:0 auto;padding:0 18px}
+header{padding:18px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;text-decoration:none;color:var(--ink)}
+.logo i{width:30px;height:30px;border-radius:8px;background:var(--brand);display:grid;place-items:center}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px}
+.load{text-align:center;padding:60px 22px}
+.bar{height:10px;background:#ece8de;border-radius:99px;overflow:hidden;margin:18px auto 8px;max-width:420px}
+.bar i{display:block;height:100%;background:var(--brand2);width:5%;transition:width .6s}
+.top{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+.ring{width:120px;height:120px;border-radius:50%;display:grid;place-items:center}
+.ring b{width:94px;height:94px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:38px;letter-spacing:-.03em}
+h1{margin:0 0 4px;font-size:26px;letter-spacing:-.02em}
+.muted{color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.kpi{background:var(--bg);border-radius:12px;padding:12px 14px}
+.kpi b{display:block;font-size:24px}
+.kpi span{font-size:13px;color:var(--muted)}
+h2{font-size:20px;margin:0 0 14px}
+.prob{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;margin-bottom:10px}
+.prob .track{grid-column:1/3;height:8px;background:#ece8de;border-radius:99px;overflow:hidden}
+.prob .track i{display:block;height:100%}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filters button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:7px 14px;font-size:14px;cursor:pointer}
+.filters button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.item{border-top:1px solid var(--line);padding:16px 0}
+.item:first-child{border-top:0}
+.ih{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.ih a{font-weight:700;color:var(--ink);text-decoration:none}
+.ih a:hover{text-decoration:underline}
+.nota{font-weight:800;border-radius:8px;padding:2px 9px;font-size:14px;white-space:nowrap}
+.meta{font-size:13px;color:var(--muted);margin:3px 0 8px}
+.p{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin:8px 0;font-size:14.5px}
+.tag{font-size:11px;font-weight:800;padding:3px 7px;border-radius:99px;text-transform:uppercase;letter-spacing:.04em;height:fit-content}
+.alta{background:#fde7dc;color:var(--red)}.media{background:#fdf1d8;color:var(--amber)}.baixa{background:#e8efe9;color:var(--green)}
+.dica{grid-column:2;color:var(--muted)}
+.lock{font-size:12px;background:#eef2f2;color:var(--brand2);padding:2px 8px;border-radius:99px;margin-left:6px}
+.cta{background:var(--brand);color:#fff;border:0}
+.cta h2{color:#fff}.cta p{color:#cfe1e1}
+.cta form{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.cta input{flex:1;min-width:180px;padding:13px 14px;border-radius:10px;border:0;font-size:16px}
+.cta button{background:var(--accent);color:var(--ink);border:0;border-radius:10px;padding:13px 20px;font-weight:800;font-size:16px;cursor:pointer}
+.more{display:block;margin:10px auto 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 18px;cursor:pointer}
+footer{padding:20px 0 50px;color:var(--muted);font-size:13px}
+@media(max-width:640px){.top{grid-template-columns:1fr;justify-items:center;text-align:center}.kpis{grid-template-columns:1fr 1fr 1fr}.kpi b{font-size:20px}}
+</style>
+</head>
+<body>
+<header class="wrap"><a class="logo" href="./"><i><svg width="18" height="18" viewBox="0 0 32 32"><path d="M6 16.5l6 6L26 8" stroke="#f2b33d" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Anuncix</a></header>
+<main class="wrap" id="app">
+  <div class="card load" id="load">
+    <h1>Fazendo a vistoria da sua loja…</h1>
+    <p class="muted" id="loadtxt">Lendo seus anúncios no Mercado Livre.</p>
+    <div class="bar"><i id="barra"></i></div>
+    <p class="muted" style="font-size:13px">Pode levar até 2 minutos. Não feche esta página.</p>
+  </div>
+</main>
+<footer class="wrap">Anuncix © 2026. Ferramenta independente, sem vínculo com o Mercado Livre. Guarde o link desta página para ver o relatório depois.</footer>
+
+<script>
+const API = "https://pgxhfrkiitninpepppvb.supabase.co/functions/v1/anuncix";
+const id = new URLSearchParams(location.search).get("id") || "";
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cor = (n) => n >= 80 ? "var(--green)" : n >= 55 ? "#b7791f" : "var(--red)";
+const RISCO = { devolucao: "Risco de devolução", busca: "Perde busca", conversao: "Vende menos" };
+let dados = null, filtro = "todos", mostrar = 20, tentativas = 0, reinicio = false;
+
+async function buscar() {
+  try {
+    const r = await fetch(`${API}/report?id=${encodeURIComponent(id)}`);
+    const d = await r.json();
+    if (!r.ok) return erro(d.erro === "não encontrado" ? "Relatório não encontrado. Confira o link." : "Link inválido.");
+    if (d.status === "pronto") { dados = d; return render(); }
+    if (d.status === "erro") return erro("Tivemos um problema ao ler sua loja. Tente conectar de novo pela página inicial.");
+    const pct = d.total ? Math.max(8, Math.round(100 * d.progresso / d.total)) : 5;
+    $("#barra").style.width = pct + "%";
+    if (d.total) $("#loadtxt").textContent = `Conferindo ${d.progresso} de ${d.total} anúncios…`;
+    tentativas++;
+    if (tentativas > 70 && !reinicio) { reinicio = true; fetch(`${API}/scan?id=${encodeURIComponent(id)}`); }
+    setTimeout(buscar, 3000);
+  } catch { setTimeout(buscar, 5000); }
+}
+
+function erro(msg) {
+  $("#app").innerHTML = `<div class="card load"><h1>Ops</h1><p class="muted">${esc(msg)}</p><p><a href="./">Voltar para a página inicial</a></p></div>`;
+}
+
+function render() {
+  const r = dados.resumo, nota = dados.nota ?? 0, cods = r.codigos || {};
+  const ordem = Object.entries(r.contagem || {}).sort((a, b) => b[1] - a[1]);
+  const maxc = ordem.length ? ordem[0][1] : 1;
+  const parcial = r.total_loja > r.analisados ? `<p class="muted" style="font-size:13px;margin:10px 0 0">Analisamos os primeiros ${r.analisados} de ${r.total_loja} anúncios ativos.</p>` : "";
+  $("#app").innerHTML = `
+  <div class="card">
+    <div class="top">
+      <div class="ring" style="background:conic-gradient(${cor(nota)} 0 ${nota}%, #ece8de 0)"><b style="color:${cor(nota)}">${nota}</b></div>
+      <div>
+        <h1>Nota da loja ${esc(r.nickname || "")}</h1>
+        <p class="muted" style="margin:0">${nota >= 80 ? "Seus anúncios estão bem cuidados. Veja os detalhes que ainda dá para melhorar." : nota >= 55 ? "Dá para vender mais: alguns anúncios têm erros que tiram você da busca." : "Muitos anúncios com erros que fazem perder venda ou gerar devolução."}</p>
+      </div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><b>${r.analisados}</b><span>anúncios analisados</span></div>
+      <div class="kpi"><b>${r.com_problema}</b><span>com algum problema</span></div>
+      <div class="kpi"><b style="color:var(--red)">${r.risco_devolucao}</b><span>com risco de devolução</span></div>
+    </div>${parcial}
+  </div>
+  ${ordem.length ? `<div class="card"><h2>Problemas mais comuns</h2>${ordem.map(([c, n]) => {
+    const info = cods[c] || { nome: c, risco: "busca" };
+    const bg = info.risco === "devolucao" ? "var(--red)" : info.risco === "busca" ? "#b7791f" : "var(--brand2)";
+    return `<div class="prob"><span>${esc(info.nome)} <span class="muted" style="font-size:13px">· ${RISCO[info.risco] || ""}</span></span><b>${n}</b><div class="track"><i style="width:${Math.round(100*n/maxc)}%;background:${bg}"></i></div></div>`;
+  }).join("")}</div>` : ""}
+  <div class="card cta" id="cta">
+    <h2>Quer que a gente corrija em lote?</h2>
+    <p>Corrigimos ficha técnica, título, descrição e compatibilidade dos anúncios com problema. Você aprova antes. Deixe seu WhatsApp que entramos em contato.</p>
+    <form id="form"><input name="nome" placeholder="Seu nome" autocomplete="name"><input name="whatsapp" placeholder="WhatsApp com DDD" inputmode="tel" required autocomplete="tel"><button>Quero a correção</button></form>
+    <p id="ok" style="display:none;margin-top:12px">Recebido! Vamos falar com você pelo WhatsApp.</p>
+  </div>
+  <div class="card">
+    <h2>Anúncios com problema</h2>
+    <div class="filters" id="filtros"></div>
+    <div id="lista"></div>
+  </div>`;
+  filtros(); lista();
+  $("#form").onsubmit = async (e) => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const resp = await fetch(`${API}/interesse`, { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, nome: f.get("nome"), whatsapp: f.get("whatsapp"), origem: "relatorio" }) });
+    if (resp.ok) { e.target.style.display = "none"; $("#ok").style.display = "block"; }
+    else alert("Confira o número de WhatsApp (com DDD).");
+  };
+}
+
+function filtros() {
+  const ops = [["todos", "Todos"], ["devolucao", "Risco de devolução"], ["busca", "Perde busca"], ["conversao", "Vende menos"]];
+  $("#filtros").innerHTML = ops.map(([k, t]) => `<button data-k="${k}" class="${filtro === k ? "on" : ""}">${t}</button>`).join("");
+  $("#filtros").querySelectorAll("button").forEach((b) => b.onclick = () => { filtro = b.dataset.k; mostrar = 20; filtros(); lista(); });
+}
+
+function lista() {
+  const cods = dados.resumo.codigos || {};
+  let itens = dados.itens || [];
+  if (filtro !== "todos") itens = itens.filter((i) => i.problemas.some((p) => (cods[p.codigo] || {}).risco === filtro));
+  if (!itens.length) { $("#lista").innerHTML = `<p class="muted">Nenhum anúncio nesta categoria.</p>`; return; }
+  $("#lista").innerHTML = itens.slice(0, mostrar).map((i) => `
+    <div class="item">
+      <div class="ih"><a href="${esc(i.permalink)}" target="_blank" rel="noopener">${esc(i.titulo)}</a><span class="nota" style="background:${cor(i.nota)}1a;color:${cor(i.nota)}">${i.nota}</span></div>
+      <div class="meta">R$ ${Number(i.preco || 0).toLocaleString("pt-BR")} · ${i.vendidos} vendidos · ${i.fotos} fotos${i.travado ? `<span class="lock" title="O Mercado Livre não deixa mudar o título de anúncio que já vendeu">título travado</span>` : ""}</div>
+      ${i.problemas.map((p) => `<div class="p"><span class="tag ${p.gravidade}">${p.gravidade === "alta" ? "Grave" : p.gravidade === "media" ? "Médio" : "Leve"}</span><span>${esc(p.texto)}</span><span class="dica">${esc(p.dica)}</span></div>`).join("")}
+    </div>`).join("") + (itens.length > mostrar ? `<button class="more" id="mais">Ver mais ${Math.min(20, itens.length - mostrar)} de ${itens.length - mostrar}</button>` : "");
+  const m = $("#mais"); if (m) m.onclick = () => { mostrar += 20; lista(); };
+}
+
+if (!/^[0-9a-f-]{36}$/.test(id)) erro("Link inválido. Comece pela página inicial."); else buscar();
+</script>
+</body>
+</html>
