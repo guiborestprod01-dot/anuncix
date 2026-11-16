@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Correção de anúncios — Anuncix</title>
+<meta name="description" content="A gente corrige título, ficha técnica, código da peça e compatibilidade dos seus anúncios no Mercado Livre. Você paga por anúncio corrigido.">
+<meta name="theme-color" content="#0A1F3A">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A1F3A'/><path d='M10 10l12 12M22 10L10 22' stroke='%237FE0FF' stroke-width='4' stroke-linecap='round'/><circle cx='22' cy='22' r='3.4' fill='%23FF5A1F'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --film:#0A1F3A;--glow:#7FE0FF;--bone:#E8F3FA;
+  --ink:#0A1F3A;--steel:#4E5D73;--line:#D3DCE7;--bg:#F2F6FA;--paper:#fff;
+  --flag:#FF5A1F;--ok:#16946A;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;font-size:17px;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--flag);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+.mark{display:inline-flex;align-items:center;gap:10px;font-weight:900;font-size:24px;letter-spacing:-.02em;text-decoration:none;color:var(--bone)}
+.mark svg{width:34px;height:34px}
+.mark b{font-weight:900;color:var(--glow)}
+
+.film{background:radial-gradient(1000px 420px at 80% 30%,#163B6B 0%,transparent 60%),var(--film);color:var(--bone)}
+.top{display:flex;align-items:center;justify-content:space-between;padding-block:22px}
+.top a.small{font-weight:600;font-size:15px;text-decoration:none;color:var(--bone);border:1.5px solid rgba(127,224,255,.45);padding:8px 14px;border-radius:99px}
+.hero{padding-block:36px 80px}
+.hero>*{max-width:760px}
+h1{font-weight:900;font-size:clamp(36px,5vw,58px);line-height:1.03;letter-spacing:-.03em;margin:0 0 20px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--glow)}
+.lead{font-size:20px;color:#B4C6DA;margin:0 0 30px;max-width:34em}
+.btn{display:inline-block;background:var(--flag);color:#fff;font-weight:800;font-size:18px;text-decoration:none;padding:17px 26px;border-radius:12px;border:0;cursor:pointer;font-family:inherit;box-shadow:0 10px 30px -10px rgba(255,90,31,.7)}
+.btn:hover{background:#E84A12}
+.promise{display:flex;flex-wrap:wrap;gap:10px 22px;margin:22px 0 0;padding:0;list-style:none;color:#B4C6DA;font-size:15px}
+.promise li:before{content:"✓";color:var(--glow);font-weight:900;margin-right:8px}
+
+section{padding:80px 0}
+section+section{border-top:1.5px solid var(--line)}
+h2{font-weight:850;font-size:clamp(28px,3.4vw,40px);line-height:1.06;letter-spacing:-.025em;margin:0 0 12px}
+.sub{color:var(--steel);font-size:18px;margin:0 0 36px;max-width:36em}
+
+/* o que corrigimos */
+.fix{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;list-style:none;margin:0;padding:0}
+.fix li{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px}
+.fix h3{font-size:18px;margin:0 0 6px}
+.fix p{margin:0;color:var(--steel);font-size:15.5px}
+
+/* preços */
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.price{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column}
+.price.main{border:2px solid var(--film);box-shadow:0 24px 50px -30px rgba(10,31,58,.5)}
+.price h3{font-size:20px;margin:0 0 4px}
+.price .for{color:var(--steel);margin:0 0 18px;font-size:15.5px}
+.price .val{font-size:48px;font-weight:900;letter-spacing:-.03em;line-height:1;margin:0 0 4px}
+.price .val small{font-size:17px;font-weight:600;color:var(--steel);letter-spacing:0}
+.price ul{list-style:none;margin:20px 0 0;padding:0}
+.price li{padding:8px 0 8px 26px;border-top:1px solid var(--line);position:relative;font-size:15.5px}
+.price li:before{content:"✓";position:absolute;left:0;top:8px;color:var(--ok);font-weight:900}
+.extra{margin:18px 0 0;background:#DDF2E8;color:#0F5E42;border-radius:12px;padding:14px 18px;font-weight:600}
+
+/* simulador */
+.calc{margin-top:28px;background:var(--film);color:var(--bone);border-radius:20px;padding:30px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+.calc h3{margin:0 0 6px;font-size:22px}
+.calc p{margin:0;color:#A9C4DD;font-size:15.5px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.fields label{font-size:14px;color:#A9C4DD;display:grid;gap:6px}
+.fields input{width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid rgba(127,224,255,.35);background:#0F2A4D;color:var(--bone);font:inherit;font-size:18px;font-weight:700}
+.total{background:#0F2A4D;border:1.5px solid rgba(127,224,255,.35);border-radius:16px;padding:22px;text-align:center}
+.total span{display:block;color:#A9C4DD;font-size:14px}
+.total b{display:block;font-size:44px;font-weight:900;letter-spacing:-.03em;color:var(--bone);line-height:1.1;margin:6px 0}
+.total small{color:var(--glow);font-size:14px;font-weight:600}
+
+/* passos */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px}
+.steps li:before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--film);color:var(--glow);font-weight:900;margin-bottom:14px}
+.steps h3{font-size:18px;margin:0 0 6px}
+.steps p{margin:0;color:var(--steel);font-size:15.5px}
+
+/* perguntas */
+details{border-bottom:1.5px solid var(--line);padding:18px 0;max-width:780px}
+details:first-of-type{border-top:1.5px solid var(--line)}
+summary{font-weight:700;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:24px;line-height:1;color:var(--flag)}
+details[open] summary:after{content:"–"}
+details p{color:var(--steel);margin:10px 0 0}
+
+/* pedido */
+.order{background:var(--paper);border:2px solid var(--film);border-radius:22px;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.order h2{margin:0 0 8px}
+.order p{color:var(--steel);margin:0}
+.order form{display:grid;gap:12px}
+.order input{padding:15px 16px;border-radius:12px;border:1.5px solid var(--line);font:inherit;font-size:17px}
+.order input:focus{border-color:var(--film);outline:none}
+#ok{display:none;background:#DDF2E8;color:#0F5E42;border-radius:12px;padding:16px;font-weight:600}
+footer.wrap{padding-block:36px 60px;color:var(--steel);font-size:14px}
+
+@media(max-width:900px){
+  .fix,.prices,.calc,.order{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  h1{font-size:34px}.lead{font-size:18px}
+  .steps,.fields{grid-template-columns:1fr}
+  section{padding:60px 0}
+  .calc,.order{padding:24px}
+  .price .val{font-size:42px}
+}
+</style>
+</head>
+<body>
+<div class="film">
+  <header class="wrap top">
+    <a class="mark" href="./" aria-label="Anuncix, início"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" rx="9" fill="#11305A" stroke="#7FE0FF" stroke-opacity=".5"/><path d="M11 11l12 12M23 11L11 23" stroke="#7FE0FF" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="3.6" fill="#FF5A1F"/></svg><span>anunci<b>x</b></span></a>
+    <a class="small" id="voltar" href="./">Voltar</a>
+  </header>
+  <div class="wrap hero">
+    <h1>A gente <em>arruma</em> seus anúncios. Você só aprova.</h1>
+    <p class="lead">Corrigimos título, ficha técnica, código da peça e compatibilidade de cada anúncio que o raio-x apontou. Você paga só pelos anúncios corrigidos.</p>
+    <a class="btn" href="#pedido">Quero a correção</a>
+    <ul class="promise"><li>3 anúncios de amostra grátis</li><li>Paga só depois de aprovar</li><li>Anúncio sem defeito não entra na conta</li></ul>
+  </div>
+</div>
+
+<section><div class="wrap">
+  <h2>O que a gente corrige</h2>
+  <p class="sub">Tudo o que aparece no seu raio-x, direto no seu anúncio do Mercado Livre.</p>
+  <ul class="fix">
+    <li><h3>Título</h3><p>Carro, ano, marca e medida no título, do jeito que o comprador digita na busca.</p></li>
+    <li><h3>Ficha técnica</h3><p>Campos obrigatórios preenchidos, medidas conferidas e Modelo sem lista de palavras.</p></li>
+    <li><h3>Código da peça</h3><p>Número de peça e código original (OEM) certos, no lugar de código de barras ou texto.</p></li>
+    <li><h3>Compatibilidade</h3><p>Os carros e anos em que a peça serve, cadastrados na tabela do Mercado Livre.</p></li>
+    <li><h3>Descrição</h3><p>Texto claro com aplicação, medidas e o que vem na caixa, para tirar a dúvida antes da compra.</p></li>
+    <li><h3>Fotos</h3><p>Lista do que falta fotografar em cada anúncio com poucas fotos.</p></li>
+  </ul>
+</div></section>
+
+<section><div class="wrap" id="precos">
+  <h2>Preço por anúncio</h2>
+  <p class="sub">O preço depende do trabalho que cada anúncio precisa. O seu raio-x já mostra quantos são de cada tipo.</p>
+  <div class="prices">
+    <article class="price">
+      <h3>Ajuste</h3>
+      <p class="for">Para anúncio com erro de título, ficha ou descrição.</p>
+      <p class="val">R$ 4,90 <small>por anúncio</small></p>
+      <ul><li>Título otimizado para a busca</li><li>Ficha técnica completa</li><li>Descrição reescrita</li><li>Lista de fotos que faltam</li></ul>
+    </article>
+    <article class="price main">
+      <h3>Completo</h3>
+      <p class="for">Para autopeça sem compatibilidade ou sem código da peça.</p>
+      <p class="val">R$ 9,90 <small>por anúncio</small></p>
+      <ul><li>Tudo do Ajuste</li><li>Pesquisa do código real da peça</li><li>Carros e anos cadastrados na compatibilidade</li><li>Conferência de medidas na ficha</li></ul>
+    </article>
+  </div>
+  <p class="extra">Acima de 100 anúncios corrigidos, 20% de desconto em todos.</p>
+
+  <div class="calc">
+    <div>
+      <h3 id="calc-titulo">Calcule a sua correção</h3>
+      <p id="calc-sub">Coloque quantos anúncios de cada tipo você quer corrigir.</p>
+      <div class="fields">
+        <label>Anúncios de Ajuste<input id="qa" type="number" min="0" inputmode="numeric" value="20"></label>
+        <label>Anúncios Completos<input id="qc" type="number" min="0" inputmode="numeric" value="30"></label>
+      </div>
+    </div>
+    <div class="total" aria-live="polite">
+      <span id="tqtd">50 anúncios</span>
+      <b id="tval">R$ 395,00</b>
+      <small id="tdesc">&nbsp;</small>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Como funciona</h2>
+  <p class="sub">Você não precisa mexer em nada no Mercado Livre.</p>
+  <ol class="steps">
+    <li><h3>Você pede</h3><p>Deixa seu WhatsApp aqui embaixo. A gente chama com o orçamento do seu raio-x.</p></li>
+    <li><h3>Amostra grátis</h3><p>Corrigimos 3 anúncios de graça para você ver o antes e o depois.</p></li>
+    <li><h3>Você aprova</h3><p>Gostou, paga por Pix só os anúncios do pedido. Não gostou, não paga nada.</p></li>
+    <li><h3>A gente publica</h3><p>Corrigimos tudo e mandamos um raio-x novo com a nota da loja depois.</p></li>
+  </ol>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Perguntas</h2>
+  <details><summary>Vocês mudam alguma coisa sem eu saber?</summary><p>Não. Você vê a amostra e o pedido antes, e só corrigimos os anúncios que você aprovar.</p></details>
+  <details><summary>E se o título estiver travado?</summary><p>O Mercado Livre não deixa mudar o título de anúncio que já vendeu. Nesses, corrigimos ficha, código da peça, compatibilidade e descrição, que é onde está a maior parte do problema.</p></details>
+  <details><summary>Como sei se um anúncio é Ajuste ou Completo?</summary><p>O raio-x já separa: autopeça sem compatibilidade ou sem código da peça é Completo. O resto é Ajuste.</p></details>
+  <details><summary>Quanto tempo leva?</summary><p>Depende da quantidade. Combinamos o prazo junto com o orçamento, pelo WhatsApp.</p></details>
+  <details><summary>Preciso passar minha senha?</summary><p>Não. A correção é feita pela autorização oficial do Mercado Livre, a mesma tela que você já usa com o Bling. Ninguém vê sua senha.</p></details>
+</div></section>
+
+<section id="pedido"><div class="wrap">
+  <div class="order">
+    <div>
+      <h2>Peça sua amostra grátis</h2>
+      <p>A gente chama no seu WhatsApp com o orçamento e os 3 anúncios de amostra.</p>
+    </div>
+    <div>
+      <form id="form">
+        <input name="nome" placeholder="Seu nome" autocomplete="name">
+        <input name="whatsapp" placeholder="WhatsApp com DDD" inputmode="tel" required autocomplete="tel">
+        <button class="btn">Quero a amostra grátis</button>
+      </form>
+      <p id="ok" role="status">Recebido! Vamos chamar você no WhatsApp com o orçamento e a amostra.</p>
+    </div>
+  </div>
+</div></section>
+
+<footer class="wrap">Anuncix é uma ferramenta independente, sem vínculo com o Mercado Livre. <a href="privacidade.html">Privacidade</a></footer>
+
+<script>
+const API = "https://pgxhfrkiitninpepppvb.supabase.co/functions/v1/anuncix";
+const q = new URLSearchParams(location.search);
+const id = /^[0-9a-f-]{36}$/.test(q.get("id") || "") ? q.get("id") : "";
+const $ = (s) => document.querySelector(s);
+const real = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+if (id) {
+  $("#voltar").href = `relatorio.html?id=${id}`;
+  $("#voltar").textContent = "Voltar ao relatório";
+}
+if (q.has("a") || q.has("c")) {
+  $("#qa").value = Math.max(0, parseInt(q.get("a")) || 0);
+  $("#qc").value = Math.max(0, parseInt(q.get("c")) || 0);
+  $("#calc-titulo").textContent = "Orçamento da sua loja";
+  $("#calc-sub").textContent = "Calculado com os anúncios que o seu raio-x apontou. Você pode mudar as quantidades.";
+}
+
+function calcular() {
+  const a = Math.max(0, parseInt($("#qa").value) || 0);
+  const c = Math.max(0, parseInt($("#qc").value) || 0);
+  const n = a + c;
+  let v = a * 4.9 + c * 9.9;
+  const desc = n > 100;
+  if (desc) v *= 0.8;
+  $("#tqtd").textContent = `${n} ${n === 1 ? "anúncio" : "anúncios"}`;
+  $("#tval").textContent = real(v);
+  $("#tdesc").innerHTML = desc ? "com 20% de desconto" : n ? `${real(n ? v / n : 0)} por anúncio, em média` : "&nbsp;";
+}
+$("#qa").oninput = $("#qc").oninput = calcular;
+calcular();
+
+$("#form").onsubmit = async (e) => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const btn = e.target.querySelector("button"); btn.disabled = true;
+  try {
+    const r = await fetch(`${API}/interesse`, { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, nome: f.get("nome"), whatsapp: f.get("whatsapp"), origem: `correcao a${$("#qa").value} c${$("#qc").value}` }) });
+    if (r.ok) { e.target.style.display = "none"; $("#ok").style.display = "block"; return; }
+    alert("Confira o número de WhatsApp (com DDD).");
+  } catch { alert("Não deu para enviar agora. Tente de novo em instantes."); }
+  btn.disabled = false;
+};
+</script>
+</body>
+</html>
