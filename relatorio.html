@@ -5,35 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seu raio-x — Anuncix</title>
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A1F3A'/><path d='M10 10l12 12M22 10L10 22' stroke='%237FE0FF' stroke-width='4' stroke-linecap='round'/><circle cx='22' cy='22' r='3.4' fill='%23FF5A1F'/></svg>">
-<meta name="theme-color" content="#0A1F3A">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%232B59FF'/><path d='M10.5 10.5l11 11M21.5 10.5l-11 11' stroke='white' stroke-width='3.6' stroke-linecap='round'/><circle cx='23' cy='23' r='3.2' fill='%23FF6A2B'/></svg>">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0A1F3A;--muted:#4E5D73;--bg:#F2F6FA;--card:#fff;--brand:#0A1F3A;--brand2:#1D4E89;--glow:#7FE0FF;--accent:#FF5A1F;--red:#C2410C;--amber:#8a5a00;--green:#1F9D6B;--line:#D3DCE7}
+:root{--ink:#14171F;--muted:#5F6675;--bg:#F5F6F8;--card:#fff;--brand:#2B59FF;--brand2:#2B59FF;--accent:#2B59FF;--red:#E5484D;--amber:#B5650A;--green:#14A06B;--line:#E7E9EE}
 *{box-sizing:border-box}
-body{margin:0;font-family:"Archivo",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+body{margin:0;font-family:"Figtree",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
 a{color:var(--brand2)}
 .wrap{max-width:960px;margin:0 auto;padding:0 18px}
-.band{background:radial-gradient(900px 300px at 80% 0%,#163B6B,transparent 60%),var(--brand);margin-bottom:-56px;padding-bottom:56px}
-header.wrap{padding-block:22px}
-.logo{display:inline-flex;align-items:center;gap:10px;font-weight:900;font-size:24px;letter-spacing:-.02em;text-decoration:none;color:#E8F3FA}
-.logo svg{width:34px;height:34px}
-.logo b{color:var(--glow);font-weight:900}
+header.wrap{padding-block:20px}
+.logo{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
+.logo svg{width:32px;height:32px}
 .card{position:relative}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px}
+.card{background:var(--card);border:0;border-radius:22px;padding:24px;margin-bottom:16px}
 .load{text-align:center;padding:60px 22px}
 .bar{height:10px;background:#E1E6EE;border-radius:99px;overflow:hidden;margin:18px auto 8px;max-width:420px}
 .bar i{display:block;height:100%;background:var(--brand2);width:5%;transition:width .6s}
 .top{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
 .ring{width:120px;height:120px;border-radius:50%;display:grid;place-items:center}
-.ring b{width:94px;height:94px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:34px;font-weight:900;letter-spacing:-.03em;line-height:1}
+.ring b{width:96px;height:96px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:34px;font-weight:900;letter-spacing:-.03em;line-height:1}
 .ring small{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:0;margin-top:4px}
 h1{margin:0 0 4px;font-size:26px;letter-spacing:-.02em}
 .muted{color:var(--muted)}
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-.kpi{background:var(--bg);border-radius:12px;padding:12px 14px}
+.kpi{background:var(--bg);border-radius:16px;padding:14px 16px}
 .kpi b{display:block;font-size:24px}
 .kpi span{font-size:13px;color:var(--muted)}
 h2{font-size:20px;margin:0 0 14px}
@@ -42,7 +40,7 @@ h2{font-size:20px;margin:0 0 14px}
 .prob .track i{display:block;height:100%}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .filters button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:7px 14px;font-size:14px;cursor:pointer}
-.filters button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .item{border-top:1px solid var(--line);padding:16px 0}
 .item:first-child{border-top:0}
 .ih{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
@@ -55,14 +53,14 @@ h2{font-size:20px;margin:0 0 14px}
 .alta{background:#fde7dc;color:var(--red)}.media{background:#fdf1d8;color:var(--amber)}.baixa{background:#e8efe9;color:var(--green)}
 .dica{grid-column:2;color:var(--muted)}
 .lock{font-size:12px;background:#eef2f2;color:var(--brand2);padding:2px 8px;border-radius:99px;margin-left:6px}
-.cta{background:var(--brand);color:#fff;border:0}
-.cta h2{color:#fff}.cta p{color:#A9C4DD}
-.offer{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid rgba(127,224,255,.25)}
-.offer span{display:block;font-size:13px;color:#A9C4DD}
-.offer b{display:block;font-size:34px;font-weight:900;letter-spacing:-.02em;line-height:1.15}
-.offer small{color:var(--glow);font-size:13.5px}
-.go{background:var(--accent);color:#fff;text-decoration:none;font-weight:800;font-size:17px;padding:15px 24px;border-radius:12px}
-.go:hover{background:#E84A12}
+.cta{background:var(--card);border:2px solid var(--brand)}
+.cta h2{color:var(--ink)}.cta p{color:var(--muted)}
+.offer{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.offer span{display:block;font-size:13px;color:var(--muted)}
+.offer b{display:block;color:var(--brand);font-size:36px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.offer small{color:var(--muted);font-size:13.5px}
+.go{background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:16px 26px;border-radius:14px}
+.go:hover{background:#1E44D6}
 .cta input{flex:1;min-width:180px;padding:13px 14px;border-radius:10px;border:0;font-size:16px}
 .cta button{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:13px 20px;font-weight:800;font-size:16px;cursor:pointer}
 .more{display:block;margin:10px auto 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 18px;cursor:pointer}
@@ -71,7 +69,7 @@ footer.wrap{padding-block:20px 50px;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
-<div class="band"><header class="wrap"><a class="logo" href="./" aria-label="Anuncix, início"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" rx="9" fill="#11305A" stroke="#7FE0FF" stroke-opacity=".5"/><path d="M11 11l12 12M23 11L11 23" stroke="#7FE0FF" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="3.6" fill="#FF5A1F"/></svg><span>anunci<b>x</b></span></a></header></div>
+<header class="wrap"><a class="logo" href="./" aria-label="Anuncix, início"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2B59FF"/><path d="M10.5 10.5l11 11M21.5 10.5l-11 11" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="23" cy="23" r="3.2" fill="#FF6A2B"/></svg>anuncix</a></header>
 <main class="wrap" id="app">
   <div class="card load" id="load">
     <h1>Fazendo o raio-x da sua loja…</h1>
@@ -146,19 +144,16 @@ function render() {
   filtros(); lista();
 }
 
-const COMPLETO = ["sem_compat", "peca_sem_codigo", "oem_parece_ean", "medida_suspeita"];
 function oferta() {
-  const comp = (dados.itens || []).filter((i) => i.problemas.length);
-  if (!comp.length) return "";
-  const c = comp.filter((i) => i.problemas.some((p) => COMPLETO.includes(p.codigo))).length;
-  const a = comp.length - c, n = a + c;
-  let v = a * 4.9 + c * 9.9; if (n > 100) v *= 0.8;
+  const n = (dados.itens || []).filter((i) => i.problemas.length).length;
+  if (!n) return "";
+  const v = Math.max(0, n - 3) * 0.99;
   const real = v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
   return `<div class="card cta" id="cta">
-    <h2>Quer que a gente arrume tudo para você?</h2>
-    <p>Corrigimos os ${n} ${n === 1 ? "anúncio" : "anúncios"} com problema: título, ficha técnica, código da peça e compatibilidade. Você vê 3 anúncios corrigidos de graça antes de pagar.</p>
-    <div class="offer"><div><span>Estimativa para a sua loja</span><b>${real}</b><small>${a} de Ajuste (R$ 4,90) e ${c} Completos (R$ 9,90)${n > 100 ? ", com 20% de desconto" : ""}</small></div>
-    <a class="go" href="correcao.html?id=${encodeURIComponent(id)}&a=${a}&c=${c}">Saber mais</a></div>
+    <h2>Quer que o Anuncix corrija tudo para você?</h2>
+    <p>O Anuncix corrige sozinho os ${n} ${n === 1 ? "anúncio" : "anúncios"} com problema: título, ficha técnica, código da peça e descrição. Você vê o antes e depois e paga por Pix, sem falar com ninguém.</p>
+    <div class="offer"><div><span>Para a sua loja</span><b>${real}</b><small>R$ 0,99 por anúncio, e os 3 primeiros são grátis</small></div>
+    <a class="go" href="correcao.html?id=${encodeURIComponent(id)}&n=${n}">Saber mais</a></div>
   </div>`;
 }
 
