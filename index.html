@@ -4,142 +4,245 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Anuncix — o raio-x dos seus anúncios</title>
-<meta name="description" content="Conecte sua conta do Mercado Livre e descubra em 1 minuto quais anúncios estão perdendo busca ou gerando devolução. Grátis e sem mexer em nada.">
+<meta name="description" content="Conecte sua conta do Mercado Livre e veja em 1 minuto quais anúncios perdem busca ou geram devolução, e o que corrigir em cada um. Grátis.">
 <meta property="og:title" content="Anuncix — o raio-x dos seus anúncios">
-<meta property="og:description" content="Descubra quais anúncios estão perdendo venda ou gerando devolução. Grátis.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230f3d3e'/><path d='M8 16.5l5 5 11-12' stroke='%23f2b33d' stroke-width='3.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<meta property="og:description" content="Veja quais anúncios da sua loja perdem busca ou geram devolução. Grátis.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23121A2B'/><path d='M10 10l12 12M22 10L10 22' stroke='%23FF5A1F' stroke-width='4.5' stroke-linecap='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0f1f20;--muted:#5b6b6c;--bg:#f7f5f0;--card:#fff;--brand:#0f3d3e;--brand2:#14595a;--accent:#f2b33d;--red:#c2410c;--line:#e4e0d6}
+:root{
+  --ink:#121A2B;      /* azul-marinho de macacão */
+  --steel:#5A6478;    /* texto secundário */
+  --line:#D5DAE3;     /* linhas do laudo */
+  --bg:#EEF1F5;       /* cinza-azulado de oficina limpa */
+  --paper:#FFFFFF;
+  --flag:#FF5A1F;     /* laranja de luz de painel: defeito */
+  --ok:#1F9D6B;       /* corrigido */
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;font-stretch:100%;font-size:17px;line-height:1.55}
 a{color:inherit}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-header{padding:18px 0}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.02em;text-decoration:none}
-.logo i{width:30px;height:30px;border-radius:8px;background:var(--brand);display:grid;place-items:center}
-.hero{padding:40px 0 56px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
-h1{font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-.03em;margin:0 0 18px}
-h1 em{font-style:normal;background:linear-gradient(transparent 62%,rgba(242,179,61,.55) 62%)}
-.lead{font-size:19px;color:var(--muted);margin:0 0 28px;max-width:34em}
-.btn{display:inline-flex;align-items:center;gap:10px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:16px 26px;border-radius:12px;border:0;cursor:pointer;box-shadow:0 6px 18px rgba(15,61,62,.25)}
-.btn:hover{background:var(--brand2)}
-.small{font-size:14px;color:var(--muted);margin-top:12px}
-.aviso{background:#fff4e0;border:1px solid #f2d39a;padding:12px 16px;border-radius:10px;margin:0 0 20px;display:none}
-.mock{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 20px 40px rgba(0,0,0,.06)}
-.score{display:flex;align-items:center;gap:16px;margin-bottom:16px}
-.ring{width:78px;height:78px;border-radius:50%;background:conic-gradient(var(--red) 0 58%,#eee 0);display:grid;place-items:center}
-.ring b{width:60px;height:60px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:24px}
-.row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
-.tag{font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap;align-self:flex-start}
-.t-alta{background:#fde7dc;color:var(--red)}.t-media{background:#fdf1d8;color:#8a5a00}
-section{padding:56px 0;border-top:1px solid var(--line)}
-h2{font-size:30px;letter-spacing:-.02em;margin:0 0 8px}
-.sub{color:var(--muted);margin:0 0 28px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
-.card h3{margin:6px 0 6px;font-size:18px}
-.card p{margin:0;color:var(--muted);font-size:15px}
-.num{font-weight:800;color:var(--brand2);font-size:14px}
-.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 28px;padding:0;margin:0;list-style:none}
-.checks li{padding-left:28px;position:relative}
-.checks li:before{content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:4px;background:var(--brand)}
-.checks li:after{content:"";position:absolute;left:5px;top:8px;width:5px;height:8px;border:solid var(--accent);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
-.example{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.example .card{border-left:4px solid var(--red)}
-.example .card.ok{border-left-color:var(--brand2)}
-.lbl{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--muted)}
-details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
-summary{font-weight:700;cursor:pointer}
-details p{color:var(--muted);margin:10px 0 0}
-.cta{background:var(--brand);color:#fff;border-radius:20px;padding:40px;text-align:center}
-.cta h2{color:#fff}.cta p{color:#cfe1e1}
-.cta .btn{background:var(--accent);color:var(--ink)}
-footer{padding:30px 0 50px;color:var(--muted);font-size:13px}
-@media(max-width:820px){.hero,.example{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.checks{grid-template-columns:1fr}.hero{padding-top:16px}}
+:focus-visible{outline:3px solid var(--flag);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* topo */
+.top{display:flex;align-items:center;justify-content:space-between;padding-block:22px}
+.mark{font-weight:900;font-stretch:125%;font-size:24px;letter-spacing:-.02em;text-decoration:none}
+.mark span{color:var(--flag)}
+.top a.small{font-weight:600;font-size:15px;text-decoration:none;border-bottom:2px solid var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-block:36px 88px}
+h1{font-stretch:125%;font-weight:900;font-size:clamp(40px,6.2vw,76px);line-height:.95;letter-spacing:-.035em;margin:0 0 26px}
+.lead{font-size:20px;color:var(--steel);max-width:30em;margin:0 0 32px}
+.btn{display:inline-block;background:var(--flag);color:#fff;font-weight:800;font-stretch:112%;font-size:18px;text-decoration:none;padding:18px 28px;border-radius:10px}
+.btn:hover{background:#E84A12}
+.note{font-size:14px;color:var(--steel);margin:16px 0 0;max-width:34em}
+.note a{font-weight:600}
+.aviso{display:none;background:#FFF1EA;border:1.5px solid var(--flag);border-radius:10px;padding:12px 16px;margin:0 0 22px;font-size:15px}
+
+/* anúncio marcado */
+.laudo{position:relative}
+.listing{background:var(--paper);border-radius:14px;padding:22px;box-shadow:0 1px 0 var(--line),0 24px 48px -24px rgba(18,26,43,.35)}
+.lhead{display:grid;grid-template-columns:120px 1fr;gap:18px}
+.photo{aspect-ratio:1;border-radius:8px;background:#F4F5F8;display:grid;place-items:center}
+.ltitle{font-size:18px;font-weight:600;line-height:1.3;margin:0 0 8px;position:relative}
+.price{font-size:26px;font-weight:500;margin:0}
+.sold{font-size:13px;color:var(--steel)}
+.spec{margin-top:18px;border-top:1px solid var(--line)}
+.spec div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.spec dt,.spec dd{margin:0}.spec dt{color:var(--steel)}.spec dd{font-weight:600;text-align:right}
+.bad{background:linear-gradient(transparent 55%,rgba(255,90,31,.28) 55%)}
+.pin{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--flag);color:#fff;font-size:13px;font-weight:800;vertical-align:middle;margin-left:6px;box-shadow:0 0 0 4px rgba(255,90,31,.18)}
+.callouts{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.callouts li{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;font-size:15.5px}
+.callouts .pin{margin:0;box-shadow:none}
+.rx{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--ink);color:#fff;margin:-22px -22px 20px;padding:12px 22px;border-radius:14px 14px 0 0;font-size:14px;font-weight:600}
+.score{font-size:14px;color:#B9C1D1}
+.score b{font-size:26px;font-stretch:125%;font-weight:900;color:var(--flag);margin-right:2px}
+
+/* seções */
+section{padding:84px 0;border-top:1.5px solid var(--line)}
+h2{font-stretch:118%;font-weight:850;font-size:clamp(28px,3.6vw,42px);line-height:1.05;letter-spacing:-.025em;margin:0 0 14px;max-width:18em}
+.sub{color:var(--steel);font-size:18px;margin:0 0 40px;max-width:36em}
+
+/* checklist em formato de laudo */
+.check{background:var(--paper);border-radius:14px;overflow:hidden}
+.check table{width:100%;border-collapse:collapse}
+.check th,.check td{text-align:left;padding:15px 22px;border-bottom:1px solid var(--line);vertical-align:top}
+.check th{font-size:14px;color:var(--steel);font-weight:600;background:#F7F8FA}
+.check tr:last-child td{border-bottom:0}
+.check td:first-child{font-weight:600;width:44%}
+.check td:last-child{color:var(--steel);font-size:15.5px}
+.risk{display:inline-block;font-size:13px;font-weight:700;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.r-dev{background:#FFE4D9;color:#B83A0C}.r-bus{background:#E3E8F2;color:var(--ink)}.r-ven{background:#E2F3EB;color:#16704D}
+
+/* antes e depois */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ba article{background:var(--paper);border-radius:14px;padding:26px;border-top:6px solid var(--flag)}
+.ba article.after{border-top-color:var(--ok)}
+.ba h3{font-size:15px;color:var(--steel);font-weight:600;margin:0 0 10px}
+.ba .t{font-size:22px;font-weight:700;line-height:1.25;margin:0 0 16px}
+.ba ul{margin:0;padding-left:20px;color:var(--steel)}
+.ba li{margin:4px 0}
+
+/* passos */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s}
+.steps li:before{content:counter(s);display:block;font-stretch:125%;font-weight:900;font-size:64px;line-height:1;color:var(--flag);margin-bottom:12px}
+.steps h3{font-size:20px;margin:0 0 6px}
+.steps p{margin:0;color:var(--steel)}
+
+/* perguntas */
+details{border-bottom:1.5px solid var(--line);padding:18px 0}
+details:first-of-type{border-top:1.5px solid var(--line)}
+summary{font-weight:700;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:24px;line-height:1;color:var(--flag)}
+details[open] summary:after{content:"–"}
+details p{color:var(--steel);margin:10px 0 0;max-width:44em}
+
+/* fechamento */
+.end{background:var(--ink);color:#fff;border-radius:20px;padding:56px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}
+.end h2{color:#fff;margin:0}
+.end p{color:#B9C1D1;margin:0 0 22px}
+footer.wrap{padding-block:36px 60px;color:var(--steel);font-size:14px}
+footer a{font-weight:600}
+
+@media(max-width:880px){
+  .hero,.ba,.end{grid-template-columns:1fr}
+  .hero{gap:48px;padding-block-start:8px}
+  .steps{grid-template-columns:1fr;gap:28px}
+  .end{padding:34px 24px}
+  .check th:nth-child(2),.check td:nth-child(2){display:none}
+}
+@media(max-width:480px){
+  .lhead{grid-template-columns:84px 1fr}
+  .check th,.check td{padding:13px 14px}
+  section{padding:64px 0}
+}
 </style>
 </head>
 <body>
-<header class="wrap"><a class="logo" href="./"><i><svg width="18" height="18" viewBox="0 0 32 32"><path d="M6 16.5l6 6L26 8" stroke="#f2b33d" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Anuncix</a></header>
+<header class="wrap top">
+  <a class="mark" href="./">anunci<span>x</span></a>
+  <a class="small" href="relatorio.html?id=00000000-0000-4000-8000-000000000001">Ver exemplo</a>
+</header>
 
 <main>
 <div class="wrap hero">
   <div>
-    <div class="aviso" id="aviso"></div>
-    <h1>Seus anúncios estão <em>perdendo venda</em> e você nem sabe.</h1>
+    <div class="aviso" id="aviso" role="status"></div>
+    <h1>Seu anúncio tem defeito. A gente mostra onde.</h1>
     <p class="lead">Conecte sua conta do Mercado Livre e, em 1 minuto, veja quais anúncios somem na busca ou geram devolução, e o que corrigir em cada um.</p>
-    <a class="btn" id="conectar" href="https://pgxhfrkiitninpepppvb.supabase.co/functions/v1/anuncix/start">Fazer meu raio-x grátis →</a>
-    <p class="small">Você entra pelo próprio Mercado Livre. Não pedimos sua senha e não alteramos nenhum anúncio. <a href="relatorio.html?id=00000000-0000-4000-8000-000000000001">Ver um exemplo de relatório</a></p>
+    <a class="btn" href="https://pgxhfrkiitninpepppvb.supabase.co/functions/v1/anuncix/start">Fazer o raio-x grátis</a>
+    <p class="note">Você entra pelo próprio Mercado Livre. Não pedimos senha e não mudamos nenhum anúncio. <a href="relatorio.html?id=00000000-0000-4000-8000-000000000001">Ver um relatório de exemplo</a></p>
   </div>
-  <div class="mock" aria-hidden="true">
-    <div class="score"><div class="ring"><b>42</b></div><div><strong>Nota da loja</strong><br><span class="small">214 anúncios analisados</span></div></div>
-    <div class="row"><span>Pastilha de freio: só serve no Astra, mas o título diz "Carros"</span><span class="tag t-alta">Devolução</span></div>
-    <div class="row"><span>Cabo de freio com 16,92 metros na ficha</span><span class="tag t-alta">Devolução</span></div>
-    <div class="row"><span>Radiador sem o carro no título e com 1 foto</span><span class="tag t-media">Busca</span></div>
-    <div class="row"><span>Número de peça preenchido como "PASTILHAS"</span><span class="tag t-alta">Devolução</span></div>
+
+  <div class="laudo" aria-label="Exemplo de anúncio com defeitos marcados">
+    <div class="listing">
+      <div class="rx"><span>Raio-x deste anúncio</span><span class="score"><b>3,2</b> de 10</span></div>
+      <div class="lhead">
+        <div class="photo" aria-hidden="true">
+          <svg width="70%" viewBox="0 0 100 70"><path d="M8 52 C8 20 30 8 50 8 C70 8 92 20 92 52 L80 52 C80 30 66 22 50 22 C34 22 20 30 20 52Z" fill="#9AA3B2"/><path d="M14 58 C14 30 32 16 50 16 C68 16 86 30 86 58" fill="none" stroke="#5A6478" stroke-width="3"/><circle cx="30" cy="40" r="3" fill="#5A6478"/><circle cx="70" cy="40" r="3" fill="#5A6478"/></svg>
+        </div>
+        <div>
+          <p class="ltitle"><span class="bad">Pastilhas De Freio Semimetálicas Originais Carros</span><span class="pin">1</span></p>
+          <p class="price">R$ 165</p>
+          <span class="sold">Novo · +5 mil vendidos</span>
+        </div>
+      </div>
+      <dl class="spec">
+        <div><dt>Marca</dt><dd>Bosch</dd></div>
+        <div><dt>Número de peça</dt><dd><span class="bad">PASTILHAS</span><span class="pin">2</span></dd></div>
+        <div><dt>Veículos compatíveis</dt><dd><span class="bad">Nenhum cadastrado</span><span class="pin">3</span></dd></div>
+      </dl>
+      <ol class="callouts">
+        <li><span class="pin">1</span><span>O título diz "Carros", mas a peça só serve no Astra. Quem procura "pastilha Astra" não acha.</span></li>
+        <li><span class="pin">2</span><span>Sem o código do fabricante, o mecânico não confirma a peça e compra no concorrente.</span></li>
+        <li><span class="pin">3</span><span>Sem compatibilidade, o anúncio some no filtro por carro, e quem compra errado devolve.</span></li>
+      </ol>
+    </div>
   </div>
 </div>
 
 <section><div class="wrap">
+  <h2>O que o Anuncix confere em cada anúncio</h2>
+  <p class="sub">São defeitos que encontramos em lojas reais do Mercado Livre, inclusive em anúncios com milhares de vendas.</p>
+  <div class="check">
+    <table>
+      <thead><tr><th>Defeito</th><th>Exemplo real</th><th>O que causa</th></tr></thead>
+      <tbody>
+        <tr><td>Autopeça sem compatibilidade de veículos</td><td>Pastilha sem nenhum carro cadastrado</td><td><span class="risk r-dev">Devolução</span></td></tr>
+        <tr><td>Carro escrito só na descrição</td><td>Radiador do 208 sem "208" no título</td><td><span class="risk r-bus">Perde busca</span></td></tr>
+        <tr><td>Medida impossível na ficha</td><td>Cabo de freio com 16,92 metros</td><td><span class="risk r-dev">Devolução</span></td></tr>
+        <tr><td>Número de peça sem código</td><td>"PASTILHAS" no lugar do código</td><td><span class="risk r-dev">Devolução</span></td></tr>
+        <tr><td>Código de barras no campo do OEM</td><td>7898549947619 como código original</td><td><span class="risk r-bus">Perde busca</span></td></tr>
+        <tr><td>Campos obrigatórios vazios</td><td>Posição, material, voltagem</td><td><span class="risk r-bus">Perde busca</span></td></tr>
+        <tr><td>Campo Modelo usado como lista</td><td>"Presente, Natal, Amigo Secreto…"</td><td><span class="risk r-bus">Perde busca</span></td></tr>
+        <tr><td>Poucas fotos ou título curto</td><td>Radiador de R$ 539 com 1 foto</td><td><span class="risk r-ven">Vende menos</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>O mesmo anúncio, antes e depois</h2>
+  <p class="sub">Pastilha de freio com mais de 5 mil vendas.</p>
+  <div class="ba">
+    <article>
+      <h3>Como está</h3>
+      <p class="t">Pastilhas De Freio Bosch Semimetálicas Originais Carros</p>
+      <ul><li>Não diz para qual carro serve</li><li>Número de peça: "PASTILHAS"</li><li>Nenhum veículo compatível cadastrado</li></ul>
+    </article>
+    <article class="after">
+      <h3>Depois do Anuncix</h3>
+      <p class="t">Pastilha Freio Dianteira Bosch Astra 1.8 2.0 Sistema Trw</p>
+      <ul><li>Carro e sistema de freio no título</li><li>Código real da peça na ficha</li><li>Astra 1.8 e 2.0 cadastrados na compatibilidade</li></ul>
+    </article>
+  </div>
+</div></section>
+
+<section><div class="wrap">
   <h2>Como funciona</h2>
-  <p class="sub">Três passos, nenhum cadastro.</p>
-  <div class="grid3">
-    <div class="card"><span class="num">1</span><h3>Conecte a conta</h3><p>Você autoriza pelo site do Mercado Livre, do mesmo jeito que faz com o Bling ou outros apps.</p></div>
-    <div class="card"><span class="num">2</span><h3>O Anuncix confere tudo</h3><p>Título, fotos, ficha técnica, descrição e compatibilidade de cada anúncio ativo.</p></div>
-    <div class="card"><span class="num">3</span><h3>Você vê o que corrigir</h3><p>Nota da loja, anúncios com risco de devolução e a dica de correção de cada um.</p></div>
-  </div>
-</div></section>
-
-<section><div class="wrap">
-  <h2>O que o Anuncix confere</h2>
-  <p class="sub">Erros que achamos em lojas reais do Mercado Livre.</p>
-  <ul class="checks">
-    <li>Autopeça sem a tabela de compatibilidade de veículos</li>
-    <li>Carro escrito só na descrição, fora do título</li>
-    <li>Medidas impossíveis na ficha (unidade errada)</li>
-    <li>Número de peça sem o código do fabricante</li>
-    <li>Código de barras no campo do código OEM</li>
-    <li>Campos obrigatórios da ficha técnica vazios</li>
-    <li>Campo "Modelo" usado como lista de palavras</li>
-    <li>Poucas fotos, título curto ou abreviado</li>
-    <li>Descrição vazia ou curta demais</li>
-    <li>Informações que se contradizem na ficha</li>
-  </ul>
-</div></section>
-
-<section><div class="wrap">
-  <h2>Um exemplo real</h2>
-  <p class="sub">Anúncio de pastilha de freio com mais de 5 mil vendas.</p>
-  <div class="example">
-    <div class="card"><div class="lbl">Como está</div><h3>Pastilhas De Freio Bosch Semimetálicas Originais Carros</h3><p>Serve só no Astra com sistema TRW, mas isso está escondido na descrição. Sem compatibilidade cadastrada. Número de peça: "PASTILHAS".</p></div>
-    <div class="card ok"><div class="lbl">Depois do Anuncix</div><h3>Pastilha Freio Dianteira Bosch Astra 1.8 2.0 Sistema Trw</h3><p>Carro e sistema no título, compatibilidade com Astra 1.8 e 2.0 cadastrada, código real da peça na ficha.</p></div>
-  </div>
+  <p class="sub">Leva 1 minuto e não precisa criar conta.</p>
+  <ol class="steps">
+    <li><h3>Conecte a conta</h3><p>Você autoriza pelo site do Mercado Livre, como faz com o Bling.</p></li>
+    <li><h3>O Anuncix confere</h3><p>Título, fotos, ficha técnica, descrição e compatibilidade de até 300 anúncios.</p></li>
+    <li><h3>Você vê o que corrigir</h3><p>Nota da loja, anúncios com risco de devolução e a correção de cada um.</p></li>
+  </ol>
 </div></section>
 
 <section><div class="wrap">
   <h2>Perguntas</h2>
-  <details><summary>É seguro conectar minha conta?</summary><p>Sim. A conexão é feita pelo sistema oficial de autorização do Mercado Livre: você entra no site deles, não no nosso. O Anuncix só lê seus anúncios para montar o relatório e não altera nada.</p></details>
+  <details><summary>É seguro conectar minha conta?</summary><p>Sim. A conexão usa a autorização oficial do Mercado Livre: você entra no site deles, não no nosso. O Anuncix só lê seus anúncios para montar o relatório e não muda nada.</p></details>
   <details><summary>Quanto custa?</summary><p>O raio-x é grátis. Se quiser que a gente corrija os anúncios em lote, você pede pelo próprio relatório.</p></details>
-  <details><summary>Quantos anúncios são analisados?</summary><p>Até 300 anúncios ativos no raio-x grátis. Lojas maiores podem pedir a análise completa.</p></details>
-  <details><summary>Funciona na Shopee?</summary><p>Ainda não. A Shopee está em preparação.</p></details>
+  <details><summary>Quantos anúncios entram no raio-x?</summary><p>Até 300 anúncios ativos. Lojas maiores podem pedir a análise completa.</p></details>
+  <details><summary>Funciona na Shopee?</summary><p>Ainda não. Por enquanto, só Mercado Livre.</p></details>
 </div></section>
 
 <section><div class="wrap">
-  <div class="cta">
+  <div class="end">
     <h2>Descubra a nota da sua loja</h2>
-    <p>Leva 1 minuto. Grátis.</p>
-    <a class="btn" href="https://pgxhfrkiitninpepppvb.supabase.co/functions/v1/anuncix/start">Fazer meu raio-x grátis →</a>
+    <div>
+      <p>Grátis, em 1 minuto, sem mudar nenhum anúncio.</p>
+      <a class="btn" href="https://pgxhfrkiitninpepppvb.supabase.co/functions/v1/anuncix/start">Fazer o raio-x grátis</a>
+    </div>
   </div>
 </div></section>
 </main>
 
-<footer class="wrap">Anuncix © 2026. Ferramenta independente, sem vínculo com o Mercado Livre. Os dados da sua conta são usados só para gerar o seu relatório. <a href="privacidade.html">Privacidade</a> · <a href="relatorio.html?id=00000000-0000-4000-8000-000000000001">Ver um relatório de exemplo</a></footer>
+<footer class="wrap">Anuncix é uma ferramenta independente, sem vínculo com o Mercado Livre. Os dados da sua conta são usados só para gerar o seu relatório. <a href="privacidade.html">Privacidade</a></footer>
 
 <script>
 const avisos = {
   "em-breve": "A conexão com o Mercado Livre está sendo ativada. Volte em algumas horas.",
   "cancelado": "Você cancelou a autorização. Quando quiser, é só tentar de novo.",
-  "expirou": "O link expirou. Clique de novo em \"Fazer meu raio-x grátis\".",
-  "erro": "Não conseguimos conectar com o Mercado Livre agora. Tente de novo em alguns minutos."
+  "expirou": "O link expirou. Clique de novo em Fazer o raio-x grátis.",
+  "erro": "Não deu para conectar com o Mercado Livre agora. Tente de novo em alguns minutos."
 };
 const a = new URLSearchParams(location.search).get("aviso");
 if (a && avisos[a]) { const el = document.getElementById("aviso"); el.textContent = avisos[a]; el.style.display = "block"; }
