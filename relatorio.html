@@ -5,19 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seu raio-x — Anuncix</title>
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230f3d3e'/><path d='M8 16.5l5 5 11-12' stroke='%23f2b33d' stroke-width='3.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A1F3A'/><path d='M10 10l12 12M22 10L10 22' stroke='%237FE0FF' stroke-width='4' stroke-linecap='round'/><circle cx='22' cy='22' r='3.4' fill='%23FF5A1F'/></svg>">
+<meta name="theme-color" content="#0A1F3A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..900&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#121A2B;--muted:#5A6478;--bg:#EEF1F5;--card:#fff;--brand:#121A2B;--brand2:#2B3F66;--accent:#FF5A1F;--red:#C2410C;--amber:#8a5a00;--green:#1F9D6B;--line:#D5DAE3}
+:root{--ink:#0A1F3A;--muted:#4E5D73;--bg:#F2F6FA;--card:#fff;--brand:#0A1F3A;--brand2:#1D4E89;--glow:#7FE0FF;--accent:#FF5A1F;--red:#C2410C;--amber:#8a5a00;--green:#1F9D6B;--line:#D3DCE7}
 *{box-sizing:border-box}
 body{margin:0;font-family:"Archivo",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
 a{color:var(--brand2)}
 .wrap{max-width:960px;margin:0 auto;padding:0 18px}
+.band{background:radial-gradient(900px 300px at 80% 0%,#163B6B,transparent 60%),var(--brand);margin-bottom:-56px;padding-bottom:56px}
 header.wrap{padding-block:22px}
-.logo{font-weight:900;font-size:24px;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
-.logo span{color:var(--accent)}
+.logo{display:inline-flex;align-items:center;gap:10px;font-weight:900;font-size:24px;letter-spacing:-.02em;text-decoration:none;color:#E8F3FA}
+.logo svg{width:34px;height:34px}
+.logo b{color:var(--glow);font-weight:900}
+.card{position:relative}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px}
 .load{text-align:center;padding:60px 22px}
 .bar{height:10px;background:#E1E6EE;border-radius:99px;overflow:hidden;margin:18px auto 8px;max-width:420px}
@@ -52,7 +56,7 @@ h2{font-size:20px;margin:0 0 14px}
 .dica{grid-column:2;color:var(--muted)}
 .lock{font-size:12px;background:#eef2f2;color:var(--brand2);padding:2px 8px;border-radius:99px;margin-left:6px}
 .cta{background:var(--brand);color:#fff;border:0}
-.cta h2{color:#fff}.cta p{color:#cfe1e1}
+.cta h2{color:#fff}.cta p{color:#A9C4DD}
 .cta form{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .cta input{flex:1;min-width:180px;padding:13px 14px;border-radius:10px;border:0;font-size:16px}
 .cta button{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:13px 20px;font-weight:800;font-size:16px;cursor:pointer}
@@ -62,7 +66,7 @@ footer.wrap{padding-block:20px 50px;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
-<header class="wrap"><a class="logo" href="./">anunci<span>x</span></a></header>
+<div class="band"><header class="wrap"><a class="logo" href="./" aria-label="Anuncix, início"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" rx="9" fill="#11305A" stroke="#7FE0FF" stroke-opacity=".5"/><path d="M11 11l12 12M23 11L11 23" stroke="#7FE0FF" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="3.6" fill="#FF5A1F"/></svg><span>anunci<b>x</b></span></a></header></div>
 <main class="wrap" id="app">
   <div class="card load" id="load">
     <h1>Fazendo o raio-x da sua loja…</h1>
