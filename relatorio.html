@@ -57,7 +57,12 @@ h2{font-size:20px;margin:0 0 14px}
 .lock{font-size:12px;background:#eef2f2;color:var(--brand2);padding:2px 8px;border-radius:99px;margin-left:6px}
 .cta{background:var(--brand);color:#fff;border:0}
 .cta h2{color:#fff}.cta p{color:#A9C4DD}
-.cta form{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.offer{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid rgba(127,224,255,.25)}
+.offer span{display:block;font-size:13px;color:#A9C4DD}
+.offer b{display:block;font-size:34px;font-weight:900;letter-spacing:-.02em;line-height:1.15}
+.offer small{color:var(--glow);font-size:13.5px}
+.go{background:var(--accent);color:#fff;text-decoration:none;font-weight:800;font-size:17px;padding:15px 24px;border-radius:12px}
+.go:hover{background:#E84A12}
 .cta input{flex:1;min-width:180px;padding:13px 14px;border-radius:10px;border:0;font-size:16px}
 .cta button{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:13px 20px;font-weight:800;font-size:16px;cursor:pointer}
 .more{display:block;margin:10px auto 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 18px;cursor:pointer}
@@ -132,26 +137,29 @@ function render() {
     const bg = info.risco === "devolucao" ? "var(--red)" : info.risco === "busca" ? "#b7791f" : "var(--brand2)";
     return `<div class="prob"><span>${esc(info.nome)} <span class="muted" style="font-size:13px">· ${RISCO[info.risco] || ""}</span></span><b>${n}</b><div class="track"><i style="width:${Math.round(100*n/maxc)}%;background:${bg}"></i></div></div>`;
   }).join("")}</div>` : ""}
-  <div class="card cta" id="cta">
-    <h2>Quer que a gente corrija em lote?</h2>
-    <p>Corrigimos ficha técnica, título, descrição e compatibilidade dos anúncios com problema. Você aprova antes. Deixe seu WhatsApp que entramos em contato.</p>
-    <form id="form"><input name="nome" placeholder="Seu nome" autocomplete="name"><input name="whatsapp" placeholder="WhatsApp com DDD" inputmode="tel" required autocomplete="tel"><button>Quero a correção</button></form>
-    <p id="ok" style="display:none;margin-top:12px">Recebido! Vamos falar com você pelo WhatsApp.</p>
-  </div>
   <div class="card">
     <h2>Anúncios com problema</h2>
     <div class="filters" id="filtros"></div>
     <div id="lista"></div>
-  </div>`;
+  </div>
+  ${oferta()}`;
   filtros(); lista();
-  $("#form").onsubmit = async (e) => {
-    e.preventDefault();
-    const f = new FormData(e.target);
-    const resp = await fetch(`${API}/interesse`, { method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, nome: f.get("nome"), whatsapp: f.get("whatsapp"), origem: "relatorio" }) });
-    if (resp.ok) { e.target.style.display = "none"; $("#ok").style.display = "block"; }
-    else alert("Confira o número de WhatsApp (com DDD).");
-  };
+}
+
+const COMPLETO = ["sem_compat", "peca_sem_codigo", "oem_parece_ean", "medida_suspeita"];
+function oferta() {
+  const comp = (dados.itens || []).filter((i) => i.problemas.length);
+  if (!comp.length) return "";
+  const c = comp.filter((i) => i.problemas.some((p) => COMPLETO.includes(p.codigo))).length;
+  const a = comp.length - c, n = a + c;
+  let v = a * 4.9 + c * 9.9; if (n > 100) v *= 0.8;
+  const real = v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  return `<div class="card cta" id="cta">
+    <h2>Quer que a gente arrume tudo para você?</h2>
+    <p>Corrigimos os ${n} ${n === 1 ? "anúncio" : "anúncios"} com problema: título, ficha técnica, código da peça e compatibilidade. Você vê 3 anúncios corrigidos de graça antes de pagar.</p>
+    <div class="offer"><div><span>Estimativa para a sua loja</span><b>${real}</b><small>${a} de Ajuste (R$ 4,90) e ${c} Completos (R$ 9,90)${n > 100 ? ", com 20% de desconto" : ""}</small></div>
+    <a class="go" href="correcao.html?id=${encodeURIComponent(id)}&a=${a}&c=${c}">Saber mais</a></div>
+  </div>`;
 }
 
 function filtros() {
