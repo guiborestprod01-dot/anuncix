@@ -7,96 +7,143 @@
 <meta name="description" content="Conecte sua conta do Mercado Livre e veja em 1 minuto quais anúncios perdem busca ou geram devolução, e o que corrigir em cada um. Grátis.">
 <meta property="og:title" content="Anuncix — o raio-x dos seus anúncios">
 <meta property="og:description" content="Veja quais anúncios da sua loja perdem busca ou geram devolução. Grátis.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23121A2B'/><path d='M10 10l12 12M22 10L10 22' stroke='%23FF5A1F' stroke-width='4.5' stroke-linecap='round'/></svg>">
+<meta name="theme-color" content="#0A1F3A">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A1F3A'/><path d='M10 10l12 12M22 10L10 22' stroke='%237FE0FF' stroke-width='4' stroke-linecap='round'/><circle cx='22' cy='22' r='3.4' fill='%23FF5A1F'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#121A2B;      /* azul-marinho de macacão */
-  --steel:#5A6478;    /* texto secundário */
-  --line:#D5DAE3;     /* linhas do laudo */
-  --bg:#EEF1F5;       /* cinza-azulado de oficina limpa */
+  --film:#0A1F3A;     /* fundo do filme de raio-x */
+  --film2:#11305A;    /* filme iluminado */
+  --glow:#7FE0FF;     /* contorno do raio-x */
+  --bone:#E8F3FA;     /* branco osso */
+  --ink:#0A1F3A;
+  --steel:#4E5D73;
+  --line:#D3DCE7;
+  --bg:#F2F6FA;
   --paper:#FFFFFF;
-  --flag:#FF5A1F;     /* laranja de luz de painel: defeito */
-  --ok:#1F9D6B;       /* corrigido */
+  --flag:#FF5A1F;     /* defeito */
+  --ok:#16946A;       /* corrigido */
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;font-size:17px;line-height:1.55}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--flag);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
 
-/* topo */
+/* ---------- logo ---------- */
+.mark{display:inline-flex;align-items:center;gap:10px;font-weight:900;font-size:24px;letter-spacing:-.02em;text-decoration:none}
+.mark svg{width:34px;height:34px;flex:none}
+.mark b{font-weight:900;color:var(--glow)}
+
+/* ---------- topo escuro: o negatoscópio ---------- */
+.film{background:
+   radial-gradient(1200px 520px at 75% 40%,#163B6B 0%,transparent 60%),
+   var(--film);
+  color:var(--bone);overflow:hidden}
 .top{display:flex;align-items:center;justify-content:space-between;padding-block:22px}
-.mark{font-weight:900;font-size:24px;letter-spacing:-.02em;text-decoration:none}
-.mark span{color:var(--flag)}
-.top a.small{font-weight:600;font-size:15px;text-decoration:none;border-bottom:2px solid var(--ink)}
+.top a.small{font-weight:600;font-size:15px;text-decoration:none;color:var(--bone);border:1.5px solid rgba(127,224,255,.45);padding:8px 14px;border-radius:99px}
+.top a.small:hover{border-color:var(--glow)}
 
-/* hero */
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-block:36px 88px}
-h1{font-weight:900;font-size:clamp(38px,5.2vw,66px);line-height:1;letter-spacing:-.03em;margin:0 0 26px;text-wrap:balance}
-.lead{font-size:20px;color:var(--steel);max-width:30em;margin:0 0 32px}
-.btn{display:inline-block;background:var(--flag);color:#fff;font-weight:800;font-size:18px;text-decoration:none;padding:18px 28px;border-radius:10px}
+.hero{display:grid;grid-template-columns:1fr 1.02fr;gap:60px;align-items:center;padding-block:40px 96px}
+h1{font-weight:900;font-size:clamp(38px,5.2vw,64px);line-height:1.02;letter-spacing:-.03em;margin:0 0 24px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--glow)}
+.lead{font-size:20px;color:#B4C6DA;max-width:30em;margin:0 0 32px}
+.btn{display:inline-block;background:var(--flag);color:#fff;font-weight:800;font-size:18px;text-decoration:none;padding:18px 28px;border-radius:12px;box-shadow:0 10px 30px -10px rgba(255,90,31,.7)}
 .btn:hover{background:#E84A12}
-.note{font-size:14px;color:var(--steel);margin:16px 0 0;max-width:34em}
-.note a{font-weight:600}
-.aviso{display:none;background:#FFF1EA;border:1.5px solid var(--flag);border-radius:10px;padding:12px 16px;margin:0 0 22px;font-size:15px}
+.note{font-size:14.5px;color:#9FB3C9;margin:18px 0 0;max-width:34em}
+.note a{font-weight:600;color:var(--bone)}
+.aviso{display:none;background:rgba(255,90,31,.12);border:1.5px solid var(--flag);border-radius:10px;padding:12px 16px;margin:0 0 22px;font-size:15px}
 
-/* anúncio marcado */
-.laudo{position:relative}
-.listing{background:var(--paper);border-radius:14px;padding:22px;box-shadow:0 1px 0 var(--line),0 24px 48px -24px rgba(18,26,43,.35)}
-.lhead{display:grid;grid-template-columns:120px 1fr;gap:18px}
-.photo{aspect-ratio:1;border-radius:8px;background:#F4F5F8;display:grid;place-items:center}
-.ltitle{font-size:18px;font-weight:600;line-height:1.3;margin:0 0 8px;position:relative}
-.price{font-size:26px;font-weight:500;margin:0}
-.sold{font-size:13px;color:var(--steel)}
-.spec{margin-top:18px;border-top:1px solid var(--line)}
-.spec div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
-.spec dt,.spec dd{margin:0}.spec dt{color:var(--steel)}.spec dd{font-weight:600;text-align:right}
-.bad{background:linear-gradient(transparent 55%,rgba(255,90,31,.28) 55%)}
-.pin{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--flag);color:#fff;font-size:13px;font-weight:800;vertical-align:middle;margin-left:6px;box-shadow:0 0 0 4px rgba(255,90,31,.18)}
-.callouts{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
-.callouts li{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;font-size:15.5px}
-.callouts .pin{margin:0;box-shadow:none}
-.rx{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--ink);color:#fff;margin:-22px -22px 20px;padding:12px 22px;border-radius:14px 14px 0 0;font-size:14px;font-weight:600}
-.score{font-size:14px;color:#B9C1D1}
-.score b{font-size:26px;font-weight:900;color:var(--flag);margin-right:2px}
+/* ---------- o anúncio no raio-x ---------- */
+.xray{position:relative;border-radius:18px;padding:22px;
+  background:
+    linear-gradient(rgba(127,224,255,.06) 1px,transparent 1px) 0 0/22px 22px,
+    linear-gradient(90deg,rgba(127,224,255,.06) 1px,transparent 1px) 0 0/22px 22px,
+    linear-gradient(160deg,#143765,#0C2647);
+  border:1.5px solid rgba(127,224,255,.35);
+  box-shadow:0 0 0 6px rgba(127,224,255,.05),0 40px 80px -30px rgba(0,0,0,.6);
+  overflow:hidden}
+.xhead{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:#A9C4DD;margin-bottom:18px}
+.xhead .live{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--glow)}
+.xhead .live:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--glow);box-shadow:0 0 10px var(--glow)}
+.score{font-size:14px}
+.score b{font-size:30px;font-weight:900;color:var(--flag);margin-right:3px;letter-spacing:-.02em}
+.lhead{display:grid;grid-template-columns:128px 1fr;gap:20px;align-items:start}
+.photo{aspect-ratio:1;border-radius:10px;border:1.5px solid rgba(127,224,255,.3);display:grid;place-items:center;background:rgba(127,224,255,.05)}
+.photo svg{width:82%;filter:drop-shadow(0 0 6px rgba(127,224,255,.55))}
+.ltitle{font-size:18px;font-weight:600;line-height:1.3;margin:0 0 8px;color:var(--bone)}
+.price{font-size:26px;font-weight:500;margin:0;color:var(--bone)}
+.sold{font-size:13px;color:#8FA8C2}
+.spec{margin:18px 0 0;border-top:1px solid rgba(127,224,255,.2)}
+.spec div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(127,224,255,.2);font-size:14.5px}
+.spec dt,.spec dd{margin:0}.spec dt{color:#8FA8C2}.spec dd{font-weight:600;text-align:right;color:var(--bone)}
+.bad{border-radius:4px;box-shadow:0 0 0 2px rgba(255,90,31,.0);transition:box-shadow .4s,background .4s}
+.pin{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--flag);color:#fff;font-size:13px;font-weight:800;vertical-align:middle;margin-left:8px;box-shadow:0 0 0 4px rgba(255,90,31,.22),0 0 16px rgba(255,90,31,.6)}
+.callouts{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:1px dashed rgba(127,224,255,.3);display:grid;gap:11px}
+.callouts li{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;font-size:15px;color:#D6E5F1}
+.callouts .pin{margin:0}
 
-/* seções */
-section{padding:84px 0;border-top:1.5px solid var(--line)}
-h2{font-weight:850;font-size:clamp(28px,3.6vw,42px);line-height:1.05;letter-spacing:-.025em;margin:0 0 14px;max-width:18em}
+/* varredura: uma vez, ao abrir */
+.beam{position:absolute;left:0;right:0;top:-30%;height:28%;pointer-events:none;
+  background:linear-gradient(transparent,rgba(127,224,255,.16) 70%,rgba(127,224,255,.75) 98%,transparent);
+  animation:scan 1.7s cubic-bezier(.5,0,.4,1) .3s forwards}
+@keyframes scan{to{top:105%}}
+.found .bad{background:rgba(255,90,31,.22);box-shadow:0 0 0 2px rgba(255,90,31,.55)}
+.js .pin,.js .callouts li,.js .score{opacity:0;transform:scale(.6);transition:opacity .35s,transform .35s}
+.js .callouts li{transform:translateY(6px)}
+.found .pin,.found .callouts li,.found .score{opacity:1;transform:none}
+.found .callouts li:nth-child(2){transition-delay:.12s}.found .callouts li:nth-child(3){transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){.beam{display:none}.js .pin,.js .callouts li,.js .score{opacity:1;transform:none;transition:none}}
+
+/* ---------- faixa de números ---------- */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(127,224,255,.2)}
+.facts div{padding:26px 0}
+.facts div+div{padding-left:28px;border-left:1px solid rgba(127,224,255,.2)}
+.facts b{display:block;font-size:30px;font-weight:900;letter-spacing:-.02em;color:var(--bone)}
+.facts span{color:#9FB3C9;font-size:15px}
+
+/* ---------- seções claras ---------- */
+section{padding:88px 0}
+section+section{border-top:1.5px solid var(--line)}
+h2{font-weight:850;font-size:clamp(28px,3.6vw,42px);line-height:1.06;letter-spacing:-.025em;margin:0 0 14px;max-width:18em}
 .sub{color:var(--steel);font-size:18px;margin:0 0 40px;max-width:36em}
 
-/* checklist em formato de laudo */
-.check{background:var(--paper);border-radius:14px;overflow:hidden}
-.check table{width:100%;border-collapse:collapse}
-.check th,.check td{text-align:left;padding:15px 22px;border-bottom:1px solid var(--line);vertical-align:top}
-.check th{font-size:14px;color:var(--steel);font-weight:600;background:#F7F8FA}
-.check tr:last-child td{border-bottom:0}
-.check td:first-child{font-weight:600;width:44%}
-.check td:last-child{color:var(--steel);font-size:15.5px}
-.risk{display:inline-block;font-size:13px;font-weight:700;padding:3px 10px;border-radius:99px;white-space:nowrap}
-.r-dev{background:#FFE4D9;color:#B83A0C}.r-bus{background:#E3E8F2;color:var(--ink)}.r-ven{background:#E2F3EB;color:#16704D}
+/* defeitos que o raio-x acha */
+.defects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;list-style:none;margin:0;padding:0}
+.defects li{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:4px 14px;align-items:start}
+.defects strong{font-size:17px;line-height:1.3}
+.defects small{grid-column:1;color:var(--steel);font-size:14.5px}
+.risk{grid-row:1/3;grid-column:2;align-self:center;font-size:13px;font-weight:700;padding:4px 10px;border-radius:99px;white-space:nowrap}
+.r-dev{background:#FFE4D9;color:#B03608}.r-bus{background:#DDE8F5;color:var(--film)}.r-ven{background:#DDF2E8;color:#106A4B}
 
 /* antes e depois */
 .ba{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.ba article{background:var(--paper);border-radius:14px;padding:26px;border-top:6px solid var(--flag)}
-.ba article.after{border-top-color:var(--ok)}
-.ba h3{font-size:15px;color:var(--steel);font-weight:600;margin:0 0 10px}
+.ba article{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px}
+.ba .tag{display:inline-block;font-size:13px;font-weight:700;padding:4px 10px;border-radius:99px;margin-bottom:14px}
+.ba .before .tag{background:#FFE4D9;color:#B03608}
+.ba .after .tag{background:#DDF2E8;color:#106A4B}
 .ba .t{font-size:22px;font-weight:700;line-height:1.25;margin:0 0 16px}
-.ba ul{margin:0;padding-left:20px;color:var(--steel)}
-.ba li{margin:4px 0}
+.ba ul{margin:0;padding:0;list-style:none}
+.ba li{padding:8px 0 8px 28px;border-top:1px solid var(--line);position:relative;color:var(--steel)}
+.ba .before li:before,.ba .after li:before{position:absolute;left:0;top:8px;font-weight:900}
+.ba .before li:before{content:"✕";color:var(--flag)}
+.ba .after li:before{content:"✓";color:var(--ok)}
+.ba .nota{display:flex;align-items:baseline;gap:6px;margin-top:16px;color:var(--steel);font-size:14px}
+.ba .nota b{font-size:28px;font-weight:900;letter-spacing:-.02em}
+.ba .before .nota b{color:var(--flag)}.ba .after .nota b{color:var(--ok)}
 
 /* passos */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;counter-reset:s;list-style:none;padding:0;margin:0}
-.steps li{counter-increment:s}
-.steps li:before{content:counter(s);display:block;font-weight:900;font-size:64px;line-height:1;color:var(--flag);margin-bottom:12px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px}
+.steps li:before{content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--film);color:var(--glow);font-weight:900;font-size:18px;margin-bottom:16px}
 .steps h3{font-size:20px;margin:0 0 6px}
 .steps p{margin:0;color:var(--steel)}
 
 /* perguntas */
+.faq details{max-width:780px}
 details{border-bottom:1.5px solid var(--line);padding:18px 0}
 details:first-of-type{border-top:1.5px solid var(--line)}
 summary{font-weight:700;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
@@ -106,31 +153,42 @@ details[open] summary:after{content:"–"}
 details p{color:var(--steel);margin:10px 0 0;max-width:44em}
 
 /* fechamento */
-.end{background:var(--ink);color:#fff;border-radius:20px;padding:56px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}
-.end h2{color:#fff;margin:0}
-.end p{color:#B9C1D1;margin:0 0 22px}
+.end{background:var(--film);color:var(--bone);border-radius:22px;padding:56px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;position:relative;overflow:hidden}
+.end:after{content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;border:2px solid rgba(127,224,255,.18);box-shadow:0 0 0 40px rgba(127,224,255,.04),0 0 0 80px rgba(127,224,255,.03)}
+.end h2{color:var(--bone);margin:0;position:relative}
+.end div{position:relative;z-index:1}
+.end p{color:#A9C4DD;margin:0 0 22px}
 footer.wrap{padding-block:36px 60px;color:var(--steel);font-size:14px}
 footer a{font-weight:600}
 
 @media(max-width:960px){
   .hero,.ba,.end{grid-template-columns:1fr}
-  .hero{gap:48px;padding-block-start:8px}
-  .steps{grid-template-columns:1fr;gap:28px}
+  .hero{gap:44px;padding-block:8px 64px}
+  .steps,.defects{grid-template-columns:1fr}
   .end{padding:34px 24px}
-  .check th:nth-child(2),.check td:nth-child(2){display:none}
 }
-@media(max-width:480px){
+@media(max-width:560px){
   .lead{font-size:18px}
   h1{font-size:36px}
-  .lhead{grid-template-columns:84px 1fr}
-  .check th,.check td{padding:13px 14px}
+  .lhead{grid-template-columns:88px 1fr;gap:14px}
+  .ltitle{font-size:16px}
+  .price{font-size:22px}
+  .xray{padding:18px}
+  .facts{grid-template-columns:1fr}
+  .facts div{padding:16px 0}
+  .facts div+div{padding-left:0;border-left:0;border-top:1px solid rgba(127,224,255,.2)}
   section{padding:64px 0}
+  .top a.small{font-size:14px;padding:7px 12px}
 }
 </style>
 </head>
 <body>
+<div class="film">
 <header class="wrap top">
-  <a class="mark" href="./">anunci<span>x</span></a>
+  <a class="mark" href="./" aria-label="Anuncix, início">
+    <svg viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" rx="9" fill="#11305A" stroke="#7FE0FF" stroke-opacity=".5"/><path d="M11 11l12 12M23 11L11 23" stroke="#7FE0FF" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="3.6" fill="#FF5A1F"/></svg>
+    <span>anunci<b>x</b></span>
+  </a>
   <a class="small" href="relatorio.html?id=00000000-0000-4000-8000-000000000001">Ver exemplo</a>
 </header>
 
@@ -138,72 +196,82 @@ footer a{font-weight:600}
 <div class="wrap hero">
   <div>
     <div class="aviso" id="aviso" role="status"></div>
-    <h1>Seu anúncio tem defeito. A gente mostra onde.</h1>
-    <p class="lead">Conecte sua conta do Mercado Livre e, em 1 minuto, veja quais anúncios somem na busca ou geram devolução, e o que corrigir em cada um.</p>
+    <h1>O <em>raio-x</em> dos seus anúncios no Mercado Livre.</h1>
+    <p class="lead">Conecte sua conta e, em 1 minuto, veja quais anúncios somem na busca ou geram devolução, e o que corrigir em cada um.</p>
     <a class="btn" href="https://pgxhfrkiitninpepppvb.supabase.co/functions/v1/anuncix/start">Fazer o raio-x grátis</a>
     <p class="note">Você entra pelo próprio Mercado Livre. Não pedimos senha e não mudamos nenhum anúncio. <a href="relatorio.html?id=00000000-0000-4000-8000-000000000001">Ver um relatório de exemplo</a></p>
   </div>
 
-  <div class="laudo" aria-label="Exemplo de anúncio com defeitos marcados">
-    <div class="listing">
-      <div class="rx"><span>Raio-x deste anúncio</span><span class="score"><b>3,2</b> de 10</span></div>
-      <div class="lhead">
-        <div class="photo" aria-hidden="true">
-          <svg width="70%" viewBox="0 0 100 70"><path d="M8 52 C8 20 30 8 50 8 C70 8 92 20 92 52 L80 52 C80 30 66 22 50 22 C34 22 20 30 20 52Z" fill="#9AA3B2"/><path d="M14 58 C14 30 32 16 50 16 C68 16 86 30 86 58" fill="none" stroke="#5A6478" stroke-width="3"/><circle cx="30" cy="40" r="3" fill="#5A6478"/><circle cx="70" cy="40" r="3" fill="#5A6478"/></svg>
-        </div>
-        <div>
-          <p class="ltitle"><span class="bad">Pastilhas De Freio Semimetálicas Originais Carros</span><span class="pin">1</span></p>
-          <p class="price">R$ 165</p>
-          <span class="sold">Novo · +5 mil vendidos</span>
-        </div>
+  <div class="xray" id="xray" aria-label="Exemplo: anúncio de pastilha de freio com 3 defeitos encontrados">
+    <div class="beam" aria-hidden="true"></div>
+    <div class="xhead"><span class="live">Raio-x do anúncio</span><span class="score">Nota <b>3,2</b> de 10</span></div>
+    <div class="lhead">
+      <div class="photo" aria-hidden="true">
+        <svg viewBox="0 0 120 120" fill="none" stroke="#7FE0FF" stroke-width="2.4" stroke-linejoin="round">
+          <path d="M14 70 C20 38 44 24 60 24 C76 24 100 38 106 70 L92 74 C88 52 74 42 60 42 C46 42 32 52 28 74 Z"/>
+          <path d="M22 72 C27 50 44 36 60 36 C76 36 93 50 98 72" stroke-opacity=".5"/>
+          <path d="M24 80 L96 80 L100 92 L20 92 Z"/>
+          <circle cx="36" cy="86" r="2.6" fill="#7FE0FF"/><circle cx="84" cy="86" r="2.6" fill="#7FE0FF"/>
+          <path d="M54 26 L54 40 M66 26 L66 40" stroke-opacity=".5"/>
+        </svg>
       </div>
-      <dl class="spec">
-        <div><dt>Marca</dt><dd>Bosch</dd></div>
-        <div><dt>Número de peça</dt><dd><span class="bad">PASTILHAS</span><span class="pin">2</span></dd></div>
-        <div><dt>Veículos compatíveis</dt><dd><span class="bad">Nenhum cadastrado</span><span class="pin">3</span></dd></div>
-      </dl>
-      <ol class="callouts">
-        <li><span class="pin">1</span><span>O título diz "Carros", mas a peça só serve no Astra. Quem procura "pastilha Astra" não acha.</span></li>
-        <li><span class="pin">2</span><span>Sem o código do fabricante, o mecânico não confirma a peça e compra no concorrente.</span></li>
-        <li><span class="pin">3</span><span>Sem compatibilidade, o anúncio some no filtro por carro, e quem compra errado devolve.</span></li>
-      </ol>
+      <div>
+        <p class="ltitle"><span class="bad">Pastilhas De Freio Semimetálicas Originais Carros</span><span class="pin">1</span></p>
+        <p class="price">R$ 165</p>
+        <span class="sold">Novo · +5 mil vendidos</span>
+      </div>
     </div>
+    <dl class="spec">
+      <div><dt>Marca</dt><dd>Bosch</dd></div>
+      <div><dt>Número de peça</dt><dd><span class="bad">PASTILHAS</span><span class="pin">2</span></dd></div>
+      <div><dt>Veículos compatíveis</dt><dd><span class="bad">Nenhum cadastrado</span><span class="pin">3</span></dd></div>
+    </dl>
+    <ol class="callouts">
+      <li><span class="pin">1</span><span>O título diz "Carros", mas a peça só serve no Astra. Quem procura "pastilha Astra" não acha.</span></li>
+      <li><span class="pin">2</span><span>Sem o código do fabricante, o mecânico não confirma a peça e compra no concorrente.</span></li>
+      <li><span class="pin">3</span><span>Sem compatibilidade, o anúncio some no filtro por carro, e quem compra errado devolve.</span></li>
+    </ol>
   </div>
 </div>
 
+<div class="wrap facts">
+  <div><b>1 minuto</b><span>para analisar até 300 anúncios</span></div>
+  <div><b>13 conferências</b><span>em título, fotos, ficha e compatibilidade</span></div>
+  <div><b>Grátis</b><span>sem cadastro e sem cartão</span></div>
+</div>
+</main>
+</div>
+
 <section><div class="wrap">
-  <h2>O que o Anuncix confere em cada anúncio</h2>
-  <p class="sub">São defeitos que encontramos em lojas reais do Mercado Livre, inclusive em anúncios com milhares de vendas.</p>
-  <div class="check">
-    <table>
-      <thead><tr><th>Defeito</th><th>Exemplo real</th><th>O que causa</th></tr></thead>
-      <tbody>
-        <tr><td>Autopeça sem compatibilidade de veículos</td><td>Pastilha sem nenhum carro cadastrado</td><td><span class="risk r-dev">Devolução</span></td></tr>
-        <tr><td>Carro escrito só na descrição</td><td>Radiador do 208 sem "208" no título</td><td><span class="risk r-bus">Perde busca</span></td></tr>
-        <tr><td>Medida impossível na ficha</td><td>Cabo de freio com 16,92 metros</td><td><span class="risk r-dev">Devolução</span></td></tr>
-        <tr><td>Número de peça sem código</td><td>"PASTILHAS" no lugar do código</td><td><span class="risk r-dev">Devolução</span></td></tr>
-        <tr><td>Código de barras no campo do OEM</td><td>7898549947619 como código original</td><td><span class="risk r-bus">Perde busca</span></td></tr>
-        <tr><td>Campos obrigatórios vazios</td><td>Posição, material, voltagem</td><td><span class="risk r-bus">Perde busca</span></td></tr>
-        <tr><td>Campo Modelo usado como lista</td><td>"Presente, Natal, Amigo Secreto…"</td><td><span class="risk r-bus">Perde busca</span></td></tr>
-        <tr><td>Poucas fotos ou título curto</td><td>Radiador de R$ 539 com 1 foto</td><td><span class="risk r-ven">Vende menos</span></td></tr>
-      </tbody>
-    </table>
-  </div>
+  <h2>O que aparece no raio-x</h2>
+  <p class="sub">Defeitos que encontramos em lojas reais do Mercado Livre, inclusive em anúncios com milhares de vendas.</p>
+  <ul class="defects">
+    <li><strong>Autopeça sem compatibilidade</strong><small>Pastilha sem nenhum carro cadastrado</small><span class="risk r-dev">Devolução</span></li>
+    <li><strong>Carro só na descrição</strong><small>Radiador do 208 sem "208" no título</small><span class="risk r-bus">Perde busca</span></li>
+    <li><strong>Medida impossível na ficha</strong><small>Cabo de freio com 16,92 metros</small><span class="risk r-dev">Devolução</span></li>
+    <li><strong>Número de peça sem código</strong><small>"PASTILHAS" no lugar do código</small><span class="risk r-dev">Devolução</span></li>
+    <li><strong>Código de barras no lugar do OEM</strong><small>7898549947619 como código original</small><span class="risk r-bus">Perde busca</span></li>
+    <li><strong>Campos obrigatórios vazios</strong><small>Posição, material, voltagem</small><span class="risk r-bus">Perde busca</span></li>
+    <li><strong>Campo Modelo usado como lista</strong><small>"Presente, Natal, Amigo Secreto…"</small><span class="risk r-bus">Perde busca</span></li>
+    <li><strong>Poucas fotos ou título curto</strong><small>Radiador de R$ 539 com 1 foto</small><span class="risk r-ven">Vende menos</span></li>
+  </ul>
 </div></section>
 
 <section><div class="wrap">
   <h2>O mesmo anúncio, antes e depois</h2>
   <p class="sub">Pastilha de freio com mais de 5 mil vendas.</p>
   <div class="ba">
-    <article>
-      <h3>Como está</h3>
+    <article class="before">
+      <span class="tag">Como está</span>
       <p class="t">Pastilhas De Freio Bosch Semimetálicas Originais Carros</p>
       <ul><li>Não diz para qual carro serve</li><li>Número de peça: "PASTILHAS"</li><li>Nenhum veículo compatível cadastrado</li></ul>
+      <p class="nota"><b>3,2</b> de 10</p>
     </article>
     <article class="after">
-      <h3>Depois do Anuncix</h3>
+      <span class="tag">Depois do Anuncix</span>
       <p class="t">Pastilha Freio Dianteira Bosch Astra 1.8 2.0 Sistema Trw</p>
       <ul><li>Carro e sistema de freio no título</li><li>Código real da peça na ficha</li><li>Astra 1.8 e 2.0 cadastrados na compatibilidade</li></ul>
+      <p class="nota"><b>9,4</b> de 10</p>
     </article>
   </div>
 </div></section>
@@ -213,12 +281,12 @@ footer a{font-weight:600}
   <p class="sub">Leva 1 minuto e não precisa criar conta.</p>
   <ol class="steps">
     <li><h3>Conecte a conta</h3><p>Você autoriza pelo site do Mercado Livre, como faz com o Bling.</p></li>
-    <li><h3>O Anuncix confere</h3><p>Título, fotos, ficha técnica, descrição e compatibilidade de até 300 anúncios.</p></li>
-    <li><h3>Você vê o que corrigir</h3><p>Nota da loja, anúncios com risco de devolução e a correção de cada um.</p></li>
+    <li><h3>O Anuncix faz o raio-x</h3><p>Título, fotos, ficha técnica, descrição e compatibilidade de até 300 anúncios.</p></li>
+    <li><h3>Você vê o que corrigir</h3><p>Nota da loja de 0 a 10, anúncios com risco de devolução e a correção de cada um.</p></li>
   </ol>
 </div></section>
 
-<section><div class="wrap">
+<section><div class="wrap faq">
   <h2>Perguntas</h2>
   <details><summary>É seguro conectar minha conta?</summary><p>Sim. A conexão usa a autorização oficial do Mercado Livre: você entra no site deles, não no nosso. O Anuncix só lê seus anúncios para montar o relatório e não muda nada.</p></details>
   <details><summary>Quanto custa?</summary><p>O raio-x é grátis. Se quiser que a gente corrija os anúncios em lote, você pede pelo próprio relatório.</p></details>
@@ -235,7 +303,6 @@ footer a{font-weight:600}
     </div>
   </div>
 </div></section>
-</main>
 
 <footer class="wrap">Anuncix é uma ferramenta independente, sem vínculo com o Mercado Livre. Os dados da sua conta são usados só para gerar o seu relatório. <a href="privacidade.html">Privacidade</a></footer>
 
@@ -248,6 +315,11 @@ const avisos = {
 };
 const a = new URLSearchParams(location.search).get("aviso");
 if (a && avisos[a]) { const el = document.getElementById("aviso"); el.textContent = avisos[a]; el.style.display = "block"; }
+
+const x = document.getElementById("xray");
+const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (calmo) x.classList.add("found");
+else { x.classList.add("js"); setTimeout(() => x.classList.add("found"), 1500); }
 </script>
 </body>
 </html>
