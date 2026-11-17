@@ -140,7 +140,7 @@ function mostrar() {
   const props = dados.itens.filter((i) => i.status === "proposta");
   const resto = dados.itens.filter((i) => i.status !== "proposta");
   if (!props.length) {
-    return falha("O Anuncix não encontrou nada que dê para corrigir sozinho com segurança. Os pontos do seu relatório (código da peça, compatibilidade e fotos) precisam ser preenchidos por você no Mercado Livre.");
+    return falha("O Anuncix não encontrou nada que dê para corrigir sozinho com segurança. Os pontos do seu relatório (fotos e dados que só você sabe, como códigos e medidas) precisam ser preenchidos por você no Mercado Livre.");
   }
   escolhidos = new Set(props.map((p) => p.item_id));
   $("#app").innerHTML = `
@@ -150,7 +150,7 @@ function mostrar() {
     ${props.map((p) => `<label class="card it"><input type="checkbox" checked data-id="${esc(p.item_id)}">
       <div><h3>${esc(p.antes.titulo)}${p.antes.vendidos ? `<span class="tag">título travado</span>` : ""}</h3>${linhas(p.depois, p.antes)}</div></label>`).join("")}
     ${resto.length ? `<div class="card rest"><b>${resto.length} ${resto.length === 1 ? "anúncio precisa" : "anúncios precisam"} de você</b>
-      <p class="muted" style="margin:6px 0 0">Neles o problema é código da peça, compatibilidade ou fotos. O Anuncix não inventa esses dados, porque um código errado faz o comprador receber a peça errada. Corrija direto no Mercado Livre seguindo o relatório.</p></div>` : ""}
+      <p class="muted" style="margin:6px 0 0">Neles o problema é foto ou um dado que só você sabe (código, medida, compatibilidade). O Anuncix não inventa esses dados, porque um dado errado faz o comprador receber o produto errado. Corrija direto no Mercado Livre seguindo o relatório.</p></div>` : ""}
     <div class="card pay" id="pay"></div>`;
   document.querySelectorAll(".it input").forEach((c) => c.onchange = () => { c.checked ? escolhidos.add(c.dataset.id) : escolhidos.delete(c.dataset.id); somar(); });
   $("#todos").onclick = () => {

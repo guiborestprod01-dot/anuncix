@@ -158,7 +158,7 @@ function oferta() {
   const real = v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
   return `<div class="card cta" id="cta">
     <h2>Quer que o Anuncix corrija tudo para você?</h2>
-    <p>O Anuncix corrige sozinho os ${n} ${n === 1 ? "anúncio" : "anúncios"} com problema: título, ficha técnica, código da peça e descrição. Você vê o antes e depois e paga por Pix, sem falar com ninguém.</p>
+    <p>O Anuncix corrige sozinho os ${n} ${n === 1 ? "anúncio" : "anúncios"} com problema: título, ficha técnica, códigos e descrição. Você vê o antes e depois e paga por Pix, sem falar com ninguém.</p>
     <div class="offer"><div><span>Para a sua loja</span><b>${real}</b><small>R$ 0,99 por anúncio, e os 3 primeiros são grátis</small></div>
     <div style="text-align:center"><a class="go" href="corrigir.html?id=${encodeURIComponent(id)}">Ver as correções</a><br><a href="correcao.html?id=${encodeURIComponent(id)}&n=${n}" style="font-size:14px;color:var(--muted)">Como funciona</a></div></div>
   </div>`;
