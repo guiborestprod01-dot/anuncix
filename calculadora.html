@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de taxas do Mercado Livre 2026 — lucro e preço ideal | Anuncix</title>
+<meta name="description" content="Calcule grátis a tarifa do Mercado Livre, o custo fixo, o custo de envio, quanto você recebe, o lucro e a margem. Ou descubra o preço ideal para a margem que você quer. Tabelas de nov/2026.">
+<meta property="og:title" content="Calculadora de taxas do Mercado Livre 2026">
+<meta property="og:description" content="Tarifa, custo fixo, envio, lucro, margem e preço ideal. Grátis, sem cadastro.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%232B59FF'/><path d='M10.5 10.5l11 11M21.5 10.5l-11 11' stroke='white' stroke-width='3.6' stroke-linecap='round'/><circle cx='23' cy='23' r='3.2' fill='%23FF6A2B'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"Calculadora de taxas do Mercado Livre","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"BRL"},"inLanguage":"pt-BR"},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Quanto o Mercado Livre cobra por venda em 2026?","acceptedAnswer":{"@type":"Answer","text":"A tarifa de venda vai de cerca de 10% a 14% no anúncio Clássico e de 15% a 19% no Premium, conforme a categoria. Abaixo de R$ 79 entra também um custo por unidade: custo fixo no Envios Flex e envio próprio, ou custo de envio por peso e preço na Coleta, Agência e Full."}},
+{"@type":"Question","name":"O custo fixo do Mercado Livre ainda existe?","acceptedAnswer":{"@type":"Answer","text":"Desde março de 2026 o custo fixo só é cobrado em itens abaixo de R$ 79 vendidos por Envios Flex ou envio próprio. Na Coleta, Agência e Full ele foi trocado por um custo de envio calculado pelo peso e pelo preço."}},
+{"@type":"Question","name":"Como calcular o preço de venda no Mercado Livre?","acceptedAnswer":{"@type":"Answer","text":"Some o custo do produto, a embalagem e o frete, e divida pelo que sobra depois da tarifa, do imposto e da margem que você quer. A aba Preço ideal desta calculadora faz essa conta, incluindo a mudança de custo quando o preço passa de R$ 79."}}
+]}]}
+</script>
+<style>
+:root{--blue:#2B59FF;--blue-d:#1E44D6;--ink:#14171F;--gray:#5F6675;--line:#E7E9EE;--soft:#F5F6F8;--white:#FFFFFF;--bad:#E5484D;--warn:#E8890C;--ok:#14A06B}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font-family:"Figtree",system-ui,sans-serif;font-size:17px;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mark{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none}
+.mark svg{width:32px;height:32px}
+.top{display:flex;align-items:center;justify-content:space-between;padding-block:20px}
+.top a.small{font-weight:600;font-size:15px;text-decoration:none;color:var(--blue)}
+h1{font-weight:800;font-size:clamp(32px,4.2vw,48px);line-height:1.08;letter-spacing:-.03em;margin:20px 0 12px;text-wrap:balance}
+.lead{font-size:19px;color:var(--gray);margin:0 0 28px;max-width:36em}
+h2{font-weight:800;font-size:clamp(24px,3vw,32px);line-height:1.15;letter-spacing:-.02em;margin:0 0 12px}
+
+.tabs{display:inline-flex;background:var(--soft);border-radius:14px;padding:5px;gap:4px;margin-bottom:18px}
+.tabs button{font:inherit;font-weight:700;font-size:16px;border:0;background:transparent;color:var(--gray);padding:10px 18px;border-radius:10px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--white);color:var(--ink);box-shadow:0 1px 3px rgba(20,23,31,.12)}
+
+.calc{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:start}
+.card{background:var(--soft);border-radius:24px;padding:24px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+.full{grid-column:1/-1}
+label{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+label small{font-weight:500;color:var(--gray)}
+input,select{width:100%;font:inherit;font-size:17px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--white);color:var(--ink)}
+input:focus,select:focus{border-color:var(--blue);outline:none}
+.pre{position:relative}.pre span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray);font-weight:600;pointer-events:none}
+.pre input{padding-left:42px}
+.suf{position:relative}.suf span{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--gray);font-weight:600;pointer-events:none}
+.suf input{padding-right:36px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.seg label{margin:0;font-weight:600;font-size:15px;border:1.5px solid var(--line);background:var(--white);border-radius:12px;padding:11px 12px;cursor:pointer;text-align:center}
+.seg input{position:absolute;opacity:0;width:1px;height:1px}
+.seg input:checked+span{color:var(--blue)}
+.seg label:has(input:checked){border-color:var(--blue);background:#EEF2FF}
+.hint{font-size:13.5px;color:var(--gray);margin:6px 0 0}
+.hide{display:none!important}
+
+.res{background:var(--white);border:1.5px solid var(--line);border-radius:24px;padding:24px;position:sticky;top:16px}
+.big{margin:0 0 4px;font-size:15px;color:var(--gray)}
+.big b{display:block;font-size:46px;font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--ink)}
+.big b.pos{color:var(--ok)}.big b.neg{color:var(--bad)}
+.tag{display:inline-block;font-weight:800;font-size:14px;padding:4px 10px;border-radius:99px;margin-top:6px}
+.tag.g{background:#E3F6EE;color:var(--ok)}.tag.y{background:#FEF3E2;color:#B5650A}.tag.r{background:#FDECEC;color:var(--bad)}
+table{width:100%;border-collapse:collapse;margin:18px 0 0;font-size:15.5px}
+td{padding:9px 0;border-top:1px solid var(--line)}
+td:last-child{text-align:right;font-weight:700;white-space:nowrap}
+tr.tot td{font-weight:800;border-top:2px solid var(--ink)}
+td.m{color:var(--bad)}
+.alert{background:#FFF4E5;border-radius:12px;padding:11px 14px;font-size:14.5px;margin-top:14px}
+
+.cta{margin-top:18px;background:#EEF2FF;border-radius:18px;padding:18px}
+.cta p{margin:0 0 12px;font-size:15.5px}
+.btn{display:inline-block;background:var(--blue);color:#fff;font-weight:700;font-size:16px;text-decoration:none;padding:13px 20px;border-radius:12px}
+.btn:hover{background:var(--blue-d)}
+
+section{padding:64px 0}
+.info{max-width:760px}
+.info p,.info li{color:var(--gray)}
+.tbl{width:100%;border-collapse:collapse;margin:14px 0 22px;font-size:15.5px;background:var(--white)}
+.tbl th,.tbl td{padding:10px 12px;border:1px solid var(--line);text-align:left}
+.tbl th{background:var(--soft);font-weight:700}
+.tbl td:last-child{text-align:left;font-weight:500;white-space:normal}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{font-weight:700;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:24px;line-height:1;color:var(--blue)}
+details[open] summary:after{content:"–"}
+details p{color:var(--gray);margin:10px 0 0}
+footer.wrap{padding-block:30px 50px;color:var(--gray);font-size:14px;border-top:1px solid var(--line)}
+footer a{font-weight:600}
+
+@media(max-width:900px){.calc{grid-template-columns:1fr}.res{position:static}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.card,.res{padding:18px;border-radius:20px}.big b{font-size:40px}.tabs{display:flex}.tabs button{flex:1;padding:10px 8px}}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="mark" href="./" aria-label="Anuncix, início"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2B59FF"/><path d="M10.5 10.5l11 11M21.5 10.5l-11 11" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="23" cy="23" r="3.2" fill="#FF6A2B"/></svg>anuncix</a>
+  <a class="small" href="./">Raio-x grátis</a>
+</header>
+
+<main class="wrap">
+  <h1>Calculadora de taxas do Mercado Livre</h1>
+  <p class="lead">Veja quanto o Mercado Livre desconta, quanto cai na sua conta e quanto sobra de lucro. Ou diga a margem que você quer e descubra o preço certo.</p>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-modo="lucro">Quanto eu lucro</button>
+    <button role="tab" aria-selected="false" data-modo="preco">Preço ideal</button>
+  </div>
+
+  <div class="calc">
+    <form class="card" id="f" onsubmit="return false">
+      <div class="grid">
+        <div class="full" id="boxPreco">
+          <label for="preco">Preço de venda</label>
+          <div class="pre"><span>R$</span><input id="preco" inputmode="decimal" value="59,90"></div>
+        </div>
+        <div class="full hide" id="boxMargem">
+          <label for="margem">Margem de lucro que você quer <small>(sobre o preço)</small></label>
+          <div class="suf"><span>%</span><input id="margem" inputmode="decimal" value="15"></div>
+        </div>
+
+        <div class="full">
+          <label>Tipo de anúncio</label>
+          <div class="seg">
+            <label><input type="radio" name="tipo" value="c" checked><span>Clássico</span></label>
+            <label><input type="radio" name="tipo" value="p"><span>Premium</span></label>
+          </div>
+        </div>
+        <div>
+          <label for="tarifa">Tarifa da categoria</label>
+          <div class="suf"><span>%</span><input id="tarifa" inputmode="decimal" value="12"></div>
+          <p class="hint">Clássico 10–14%, Premium 15–19%. Autopeças costuma ficar em 12% / 17%.</p>
+        </div>
+        <div>
+          <label for="envio">Forma de envio</label>
+          <select id="envio">
+            <option value="me">Coleta, Agência ou Full</option>
+            <option value="flex">Envios Flex</option>
+            <option value="proprio">Envio próprio / retirada</option>
+          </select>
+        </div>
+
+        <div id="boxPeso">
+          <label for="peso">Peso do pacote</label>
+          <select id="peso">
+            <option value="0">Até 300 g</option>
+            <option value="1" selected>300 a 500 g</option>
+            <option value="2">500 g a 1 kg</option>
+            <option value="3">1 a 1,5 kg</option>
+            <option value="4">1,5 a 2 kg</option>
+            <option value="5">2 a 3 kg</option>
+            <option value="6">3 a 4 kg</option>
+            <option value="7">4 a 5 kg</option>
+            <option value="8">5 a 6 kg</option>
+            <option value="9">6 a 10 kg</option>
+          </select>
+          <p class="hint">Usado abaixo de R$ 79.</p>
+        </div>
+        <div id="boxFrete">
+          <label for="frete">Frete grátis que você paga <small>(R$ 79 ou mais)</small></label>
+          <div class="pre"><span>R$</span><input id="frete" inputmode="decimal" value="22,00"></div>
+          <p class="hint">Veja o valor do seu anúncio em "Custos de envio" no Mercado Livre.</p>
+        </div>
+
+        <div>
+          <label for="custo">Custo do produto</label>
+          <div class="pre"><span>R$</span><input id="custo" inputmode="decimal" value="25,00"></div>
+        </div>
+        <div>
+          <label for="emb">Embalagem e outros</label>
+          <div class="pre"><span>R$</span><input id="emb" inputmode="decimal" value="1,50"></div>
+        </div>
+        <div class="full">
+          <label for="imp">Imposto sobre a venda <small>(Simples, MEI etc.)</small></label>
+          <div class="suf"><span>%</span><input id="imp" inputmode="decimal" value="6"></div>
+          <p class="hint">MEI paga um valor fixo por mês: deixe 0.</p>
+        </div>
+      </div>
+    </form>
+
+    <aside class="res" aria-live="polite">
+      <div id="out"></div>
+      <div class="cta">
+        <p><b>Preço certo não adianta se o anúncio não aparece.</b> Veja grátis quais anúncios da sua loja perdem busca ou geram devolução.</p>
+        <a class="btn" href="./">Fazer o raio-x grátis</a>
+      </div>
+    </aside>
+  </div>
+
+  <section class="info">
+    <h2>Quanto o Mercado Livre cobra por venda em 2026</h2>
+    <p>Anunciar é grátis. Você paga quando vende, e a cobrança tem até três partes:</p>
+    <table class="tbl">
+      <tr><th>Cobrança</th><th>Quanto é</th></tr>
+      <tr><td>Tarifa de venda</td><td>Clássico 10% a 14%, Premium 15% a 19%, conforme a categoria</td></tr>
+      <tr><td>Custo de envio (abaixo de R$ 79)</td><td>Coleta, Agência e Full: de R$ 5,65 a cerca de R$ 11, pelo peso e pelo preço</td></tr>
+      <tr><td>Custo fixo (abaixo de R$ 79)</td><td>Flex e envio próprio: R$ 6,25 até R$ 18,99, R$ 6,65 de R$ 19 a R$ 48,99, R$ 7,75 de R$ 49 a R$ 78,99</td></tr>
+      <tr><td>Frete grátis (R$ 79 ou mais)</td><td>Pago pelo vendedor, com desconto conforme a reputação</td></tr>
+    </table>
+    <p>Desde março de 2026, o custo fixo deixou de valer na Coleta, Agência e Full abaixo de R$ 79 e virou um custo de envio por peso. Por isso um produto leve pode pagar menos do que antes, e um pesado, mais.</p>
+    <p>Os valores desta calculadora são para reputação verde e produto novo, consultados em novembro de 2026. O Mercado Livre muda as tabelas de tempos em tempos: antes de fechar o preço, confira no simulador de custos da sua conta.</p>
+
+    <h2 style="margin-top:40px">Perguntas frequentes</h2>
+    <details><summary>Vale mais a pena Clássico ou Premium?</summary><p>O Premium cobra uns 5 pontos a mais e libera parcelamento sem juros, que ajuda em produto mais caro. Para itens baratos, o Clássico costuma deixar mais lucro. Use a calculadora com os dois e compare.</p></details>
+    <details><summary>Por que meu lucro muda tanto perto de R$ 79?</summary><p>Abaixo de R$ 79 você paga o custo de envio ou o custo fixo, de R$ 5 a R$ 11. A partir de R$ 79 o comprador ganha frete grátis e você paga o frete, que costuma ser maior. A aba Preço ideal já considera essa virada.</p></details>
+    <details><summary>Qual imposto devo colocar?</summary><p>Quem está no Simples Nacional costuma pagar de 4% a 6% no comércio, conforme o faturamento. O MEI paga um valor fixo por mês e pode deixar 0. Na dúvida, pergunte ao seu contador.</p></details>
+    <details><summary>A calculadora salva meus dados?</summary><p>Não. Toda a conta é feita no seu navegador e nada é enviado.</p></details>
+  </section>
+</main>
+
+<footer class="wrap">Anuncix é uma ferramenta independente, sem vínculo com o Mercado Livre. Valores de referência, sujeitos a mudança pelo Mercado Livre. <a href="./">Raio-x grátis</a> · <a href="privacidade.html">Privacidade</a></footer>
+
+<script>
+// Custo de envio Coleta/Agência/Full abaixo de R$ 79 (reputação verde, produto novo, nov/2026)
+// colunas: até 18,99 | 19–48,99 | 49–78,99 ; última linha (6–10 kg) estimada
+const ENVIO=[[5.65,6.85,8.15],[5.95,6.95,8.25],[6.05,7.15,8.45],[6.15,7.35,8.65],[6.25,7.45,8.75],[6.35,8.65,9.15],[6.45,8.75,9.75],[6.55,8.85,10.25],[6.65,8.95,10.35],[7.05,9.45,10.85]];
+const $=id=>document.getElementById(id);
+const num=id=>{const v=parseFloat(String($(id).value).replace(/\./g,'').replace(',','.'));return isNaN(v)?0:v};
+const brl=v=>(v<0?'− ':'')+'R$ '+Math.abs(v).toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const pct=v=>v.toFixed(1).replace('.',',')+'%';
+let modo='lucro';
+
+function faixa(p){return p<19?0:p<49?1:2}
+function custoUnit(p,envio,peso,frete){
+  if(p>=79) return {nome:envio==='me'||envio==='flex'?'Frete grátis (você paga)':'Frete (você paga)',v:frete};
+  if(envio==='me'){let v=ENVIO[peso][faixa(p)]; if(p<19) v=Math.min(v,p/2); return {nome:'Custo de envio ML',v}}
+  const v=p<19?6.25:p<49?6.65:7.75; return {nome:'Custo fixo ML',v};
+}
+function conta(p,o){
+  const tar=p*o.tarifa/100, imp=p*o.imp/100, cu=custoUnit(p,o.envio,o.peso,o.frete);
+  const recebe=p-tar-cu.v, lucro=recebe-imp-o.custo-o.emb;
+  return {p,tar,imp,cu,recebe,lucro,margem:p>0?lucro/p*100:0};
+}
+function opts(){return {tarifa:num('tarifa'),imp:num('imp'),custo:num('custo'),emb:num('emb'),frete:num('frete'),envio:$('envio').value,peso:+$('peso').value}}
+function precoIdeal(m,o){
+  // busca o menor preço (centavo) que atinge a margem; testa as duas faixas
+  let best=null;
+  for(let c=100;c<=2000000;c++){const r=conta(c/100,o); if(r.margem>=m){best=r;break} if(c>800000)break}
+  return best;
+}
+function linhas(r,o){
+  return `<table>
+  <tr><td>Preço de venda</td><td>${brl(r.p)}</td></tr>
+  <tr><td>Tarifa de venda (${pct(o.tarifa)})</td><td class="m">− ${brl(r.tar)}</td></tr>
+  <tr><td>${r.cu.nome}</td><td class="m">− ${brl(r.cu.v)}</td></tr>
+  <tr class="tot"><td>Você recebe do ML</td><td>${brl(r.recebe)}</td></tr>
+  <tr><td>Imposto (${pct(o.imp)})</td><td class="m">− ${brl(r.imp)}</td></tr>
+  <tr><td>Custo do produto</td><td class="m">− ${brl(o.custo)}</td></tr>
+  <tr><td>Embalagem e outros</td><td class="m">− ${brl(o.emb)}</td></tr>
+  <tr class="tot"><td>Lucro por venda</td><td>${brl(r.lucro)}</td></tr>
+  </table>`;
+}
+function calc(){
+  const o=opts();
+  let html='';
+  if(modo==='lucro'){
+    const r=conta(num('preco'),o);
+    html=`<p class="big">Lucro por venda<b class="${r.lucro>=0?'pos':'neg'}">${brl(r.lucro)}</b></p>
+    <span class="tag ${r.margem>=15?'g':r.margem>=5?'y':'r'}">Margem ${pct(r.margem)} · ${r.margem>=15?'boa':r.margem>=5?'apertada':r.margem<0?'prejuízo':'muito baixa'}</span>
+    ${linhas(r,o)}`;
+    if(r.p>=72&&r.p<79){const a=conta(79,o);html+=`<div class="alert">A R$ 79,00 o comprador ganha frete grátis e o seu lucro passa a ser ${brl(a.lucro)}.</div>`}
+    if(r.p>=79&&r.p<=86){const a=conta(78.99,o);html+=`<div class="alert">A R$ 78,99 você não pagaria o frete grátis e o lucro seria ${brl(a.lucro)}.</div>`}
+  }else{
+    const m=num('margem'), r=precoIdeal(m,o);
+    if(!r){html=`<p class="big">Preço ideal<b class="neg">—</b></p><div class="alert">Com essa tarifa e esse imposto não dá para chegar em ${pct(m)} de margem. Baixe a margem ou revise os custos.</div>`}
+    else{
+      html=`<p class="big">Cobre pelo menos<b>${brl(r.p)}</b></p><span class="tag g">Margem ${pct(r.margem)} · lucro ${brl(r.lucro)}</span>${linhas(r,o)}`;
+      if(r.p>=79){const b=conta(78.99,o); if(b.margem>=m) html+=`<div class="alert">Também dá certo a R$ 78,99.</div>`}
+    }
+  }
+  $('out').innerHTML=html;
+  $('boxPeso').classList.toggle('hide',$('envio').value!=='me');
+}
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
+  modo=b.dataset.modo;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
+  $('boxPreco').classList.toggle('hide',modo!=='lucro');$('boxMargem').classList.toggle('hide',modo==='lucro');calc();
+});
+document.querySelectorAll('input[name=tipo]').forEach(r=>r.onchange=()=>{const t=num('tarifa');if(r.value==='p'&&t<15)$('tarifa').value='17';if(r.value==='c'&&t>14)$('tarifa').value='12';calc()});
+$('f').addEventListener('input',calc);$('f').addEventListener('change',calc);
+calc();
+</script>
+</body>
+</html>
