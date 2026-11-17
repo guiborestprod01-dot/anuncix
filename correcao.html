@@ -112,6 +112,14 @@ footer.wrap{padding-block:36px 60px;color:var(--steel);font-size:14px}
   .calc,.order{padding:24px}
   .price .val{font-size:42px}
 }
+.pacs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 20px}
+.pacs div{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
+.pacs .best{outline:2px solid var(--blue)}
+.pacs p{margin:0;color:var(--steel);font-size:14px;font-weight:600}
+.pacs b{display:block;font-size:30px;font-weight:800;letter-spacing:-.02em;margin:4px 0 2px}
+.pacs .best b{color:var(--blue)}
+.pacs span{color:var(--steel);font-size:14px}
+@media(max-width:700px){.pacs{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -142,8 +150,14 @@ footer.wrap{padding-block:36px 60px;color:var(--steel);font-size:14px}
 </div></section>
 
 <section><div class="wrap" id="precos">
-  <h2>R$ 0,99 por anúncio</h2>
-  <p class="sub">Um preço só, para qualquer anúncio. Os 3 primeiros saem de graça para você ver o resultado, e anúncio sem defeito não entra na conta.</p>
+  <h2>R$ 0,99 por anúncio, ou menos no pacote</h2>
+  <p class="sub">Os 3 primeiros saem de graça para você ver o resultado, e anúncio sem defeito não entra na conta. No pacote, os créditos que sobram ficam guardados para os anúncios novos.</p>
+  <div class="pacs">
+    <div><p>Avulso</p><b>R$ 0,99</b><span>por anúncio</span></div>
+    <div><p>Pacote 50</p><b>R$ 39</b><span>R$ 0,78 por anúncio</span></div>
+    <div class="best"><p>Pacote 200</p><b>R$ 119</b><span>R$ 0,60 por anúncio</span></div>
+    <div><p>Pacote 500</p><b>R$ 249</b><span>R$ 0,50 por anúncio</span></div>
+  </div>
   <div class="calc">
     <div>
       <h3 id="calc-titulo">Calcule a sua correção</h3>
@@ -219,11 +233,18 @@ function calcular() {
   const n = Math.max(0, parseInt($("#qn").value) || 0);
   const pagos = Math.max(0, n - 3);
   $("#tqtd").textContent = `${n} ${n === 1 ? "anúncio" : "anúncios"}`;
-  $("#tval").textContent = real(pagos * 0.99);
+  const opc = [[pagos * 0.99, "avulso"], [39, "pacote de 50", 50], [119, "pacote de 200", 200], [249, "pacote de 500", 500]]
+    .filter((o) => !o[2] || o[2] >= pagos).sort((a, b) => a[0] - b[0])[0];
+  $("#tval").textContent = real(pagos ? opc[0] : 0);
+  if (pagos && opc[1] !== "avulso") { $("#tdesc").textContent = `no ${opc[1]}, os 3 primeiros grátis`; return; }
   $("#tdesc").textContent = n ? (n <= 3 ? "sai de graça" : "os 3 primeiros são grátis") : "\u00a0";
 }
 $("#qn").oninput = calcular;
 calcular();
+</script>
+<script>
+// indicação de parceiro: guarda o ?ref= e leva junto para o login do Mercado Livre
+(function(){try{var r=new URLSearchParams(location.search).get("ref");if(r)localStorage.setItem("anuncix-ref",r.toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,12));var g=localStorage.getItem("anuncix-ref");if(g)document.querySelectorAll('a[href*="/anuncix/start"]').forEach(function(a){a.href=a.href.split("?")[0]+"?ref="+g});}catch(e){}})();
 </script>
 </body>
 </html>
