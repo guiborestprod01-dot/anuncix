@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /relatorio.html
+Disallow: /corrigir.html
+
+Sitemap: https://anuncix.com.br/sitemap.xml
