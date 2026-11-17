@@ -44,6 +44,14 @@ summary{cursor:pointer;color:var(--blue);font-weight:600}
 details p{white-space:pre-wrap;background:var(--soft);border-radius:12px;padding:12px;margin:8px 0 0}
 .tag{display:inline-block;font-size:12.5px;font-weight:700;background:#FEF3E2;color:#B5650A;border-radius:99px;padding:2px 9px;margin-left:6px;vertical-align:middle}
 .rest{font-size:15px}
+.pay h2{font-size:19px;margin:0 0 4px}
+.pay p{margin:0 0 12px;color:var(--gray);font-size:14.5px}
+.opt{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;margin-top:8px;cursor:pointer}
+.opt:has(input:checked){border-color:var(--blue);background:#F3F6FF}
+.opt input{width:18px;height:18px;accent-color:var(--blue)}
+.opt b{font-size:15.5px}.opt small{display:block;color:var(--gray);font-size:13.5px}
+.opt .pr{font-weight:800;font-size:17px;white-space:nowrap}
+.eco{color:var(--ok);font-weight:700}
 .rest li{margin:4px 0}
 
 .foot{position:fixed;left:0;right:0;bottom:0;background:var(--white);border-top:1px solid var(--line);padding:14px 16px calc(14px + env(safe-area-inset-bottom))}
@@ -137,12 +145,13 @@ function mostrar() {
   escolhidos = new Set(props.map((p) => p.item_id));
   $("#app").innerHTML = `
     <h1>Confira as correções</h1>
-    <p class="lead">Nada muda no Mercado Livre até você confirmar. Desmarque o que não quiser. Os ${dados.gratis ? dados.gratis + " primeiros saem de graça" : "anúncios custam R$ 0,99 cada"}.</p>
+    <p class="lead">Nada muda no Mercado Livre até você confirmar. Desmarque o que não quiser.${dados.gratis ? ` Os ${dados.gratis} primeiros saem de graça.` : ""}${dados.creditos ? ` Você tem ${dados.creditos} ${dados.creditos === 1 ? "crédito" : "créditos"} guardados.` : ""}</p>
     <div class="top"><span class="muted">${props.length} ${props.length === 1 ? "anúncio" : "anúncios"} com correção pronta</span><button class="sel" id="todos">Desmarcar todos</button></div>
     ${props.map((p) => `<label class="card it"><input type="checkbox" checked data-id="${esc(p.item_id)}">
       <div><h3>${esc(p.antes.titulo)}${p.antes.vendidos ? `<span class="tag">título travado</span>` : ""}</h3>${linhas(p.depois, p.antes)}</div></label>`).join("")}
     ${resto.length ? `<div class="card rest"><b>${resto.length} ${resto.length === 1 ? "anúncio precisa" : "anúncios precisam"} de você</b>
-      <p class="muted" style="margin:6px 0 0">Neles o problema é código da peça, compatibilidade ou fotos. O Anuncix não inventa esses dados, porque um código errado faz o comprador receber a peça errada. Corrija direto no Mercado Livre seguindo o relatório.</p></div>` : ""}`;
+      <p class="muted" style="margin:6px 0 0">Neles o problema é código da peça, compatibilidade ou fotos. O Anuncix não inventa esses dados, porque um código errado faz o comprador receber a peça errada. Corrija direto no Mercado Livre seguindo o relatório.</p></div>` : ""}
+    <div class="card pay" id="pay"></div>`;
   document.querySelectorAll(".it input").forEach((c) => c.onchange = () => { c.checked ? escolhidos.add(c.dataset.id) : escolhidos.delete(c.dataset.id); somar(); });
   $("#todos").onclick = () => {
     const marcar = escolhidos.size === 0;
@@ -153,19 +162,37 @@ function mostrar() {
   somar();
 }
 
+let escolha = "avulso";
+function conta() {
+  const n = escolhidos.size, gratis = Math.min(n, dados.gratis || 0);
+  const cred = Math.min(n - gratis, dados.creditos || 0), resto = n - gratis - cred;
+  return { n, gratis, cred, resto };
+}
 function somar() {
-  const n = escolhidos.size, gratis = Math.min(n, dados.gratis || 0), v = (n - gratis) * dados.preco;
-  $("#fq").textContent = `${n} ${n === 1 ? "anúncio" : "anúncios"}${gratis ? `, ${gratis} grátis` : ""}`;
+  const { n, gratis, cred, resto } = conta();
+  const pacs = Object.entries(dados.pacotes || {}).filter(([, p]) => p.creditos >= resto);
+  if (escolha !== "avulso" && !pacs.some(([k]) => k === escolha)) escolha = "avulso";
+  const avulso = resto * dados.preco;
+  const box = $("#pay");
+  if (box) {
+    if (!resto) box.innerHTML = `<h2>Sem custo</h2><p>${gratis ? `${gratis} grátis` : ""}${gratis && cred ? " e " : ""}${cred ? `${cred} pagos com seus créditos` : ""}.</p>`;
+    else box.innerHTML = `<h2>Como pagar</h2><p>${gratis || cred ? `${gratis ? gratis + " grátis" : ""}${gratis && cred ? ", " : ""}${cred ? cred + " com seus créditos" : ""}. Faltam ${resto}.` : `${resto} ${resto === 1 ? "anúncio" : "anúncios"}.`} O pacote sai mais barato e o que sobrar fica guardado para os anúncios novos.</p>
+      <label class="opt"><input type="radio" name="pg" value="avulso" ${escolha === "avulso" ? "checked" : ""}><span><b>Só estes ${resto}</b><small>R$ 0,99 cada</small></span><span class="pr">${real(avulso)}</span></label>
+      ${pacs.map(([k, p]) => `<label class="opt"><input type="radio" name="pg" value="${k}" ${escolha === k ? "checked" : ""}><span><b>Pacote de ${p.creditos}</b><small>${real(p.preco / p.creditos)} cada${p.creditos > resto ? `, sobram <span class="eco">${p.creditos - resto}</span> para depois` : ""}</small></span><span class="pr">${real(p.preco)}</span></label>`).join("")}`;
+    box.querySelectorAll("input[name=pg]").forEach((r) => r.onchange = () => { escolha = r.value; somar(); });
+  }
+  const v = !resto ? 0 : escolha === "avulso" ? avulso : dados.pacotes[escolha].preco;
+  $("#fq").textContent = `${n} ${n === 1 ? "anúncio" : "anúncios"}${escolha !== "avulso" && resto ? `, pacote de ${dados.pacotes[escolha].creditos}` : ""}`;
   $("#fv").textContent = real(v);
   $("#go").disabled = !n;
-  $("#go").textContent = n && v === 0 ? "Corrigir de graça" : "Pagar com Pix";
+  $("#go").textContent = n && v === 0 ? "Corrigir agora" : "Pagar com Pix";
   if ($("#todos")) $("#todos").textContent = n ? "Desmarcar todos" : "Marcar todos";
 }
 
 $("#go").onclick = async () => {
   $("#go").disabled = true;
   try {
-    const r = await fetch(`${API}/pedido`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, itens: [...escolhidos] }) });
+    const r = await fetch(`${API}/pedido`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, itens: [...escolhidos], pacote: escolha === "avulso" ? null : escolha }) });
     const j = await r.json();
     if (!r.ok) { alert(j.erro || "Não deu para continuar."); $("#go").disabled = false; return; }
     guarda.set("anuncix-pedido-" + id, j.pedido);
