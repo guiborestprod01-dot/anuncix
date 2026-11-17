@@ -112,6 +112,13 @@ function erro(msg) {
 
 function render() {
   const r = dados.resumo, nota = dados.nota ?? 0, cods = r.codigos || {};
+  if (!Number(r.analisados)) {
+    $("#app").innerHTML = `<div class="card load"><h1>Nenhum anúncio ativo</h1>
+      <p class="muted">A conta${r.nickname ? " " + esc(r.nickname) : ""} está conectada, mas não tem anúncios ativos no Mercado Livre agora. O raio-x analisa só anúncios ativos.</p>
+      <p class="muted">Se você vende por outra conta, saia do Mercado Livre e faça o raio-x entrando com ela.</p>
+      <p><a href="./">Voltar para a página inicial</a></p></div>`;
+    return;
+  }
   const ordem = Object.entries(r.contagem || {}).sort((a, b) => b[1] - a[1]);
   const maxc = ordem.length ? ordem[0][1] : 1;
   const parcial = r.total_loja > r.analisados ? `<p class="muted" style="font-size:13px;margin:10px 0 0">Analisamos os primeiros ${r.analisados} de ${r.total_loja} anúncios ativos.</p>` : "";
