@@ -128,7 +128,7 @@ footer a{font-weight:600}
 <body>
 <header class="wrap top">
   <a class="mark" href="./" aria-label="Anuncix, início"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2B59FF"/><path d="M10.5 10.5l11 11M21.5 10.5l-11 11" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="23" cy="23" r="3.2" fill="#FF6A2B"/></svg>anuncix</a>
-  <nav style="display:flex;gap:18px"><a class="small" href="calculadora.html">Calculadora de taxas</a><a class="small" href="relatorio.html?id=00000000-0000-4000-8000-000000000001">Ver exemplo</a></nav>
+  <a class="small" href="relatorio.html?id=00000000-0000-4000-8000-000000000001">Ver exemplo</a>
 </header>
 
 <main>
@@ -190,7 +190,7 @@ footer a{font-weight:600}
   <p class="sub">Você só paga se quiser que o Anuncix corrija.</p>
   <div class="price">
     <div><p>Raio-x da loja</p><b>Grátis</b><p>Nota da loja e lista de defeitos de até 300 anúncios.</p></div>
-    <div class="main"><p>Correção automática</p><b>R$ 0,99</b><p>Por anúncio corrigido. Os 3 primeiros são grátis. <a href="correcao.html">Como funciona</a></p></div>
+    <div class="main"><p>Correção automática</p><b>R$ 0,99</b><p>Por anúncio corrigido, ou a partir de R$ 0,50 nos pacotes. Os 3 primeiros são grátis. <a href="correcao.html">Ver preços</a></p></div>
   </div>
 </div></section>
 
@@ -209,7 +209,7 @@ footer a{font-weight:600}
 </div></section>
 </main>
 
-<footer class="wrap">Anuncix é uma ferramenta independente, sem vínculo com o Mercado Livre. Os dados da sua conta são usados só para gerar o seu relatório. <a href="calculadora.html">Calculadora de taxas do Mercado Livre</a> · <a href="privacidade.html">Privacidade</a></footer>
+<footer class="wrap">Anuncix é uma ferramenta independente, sem vínculo com o Mercado Livre. Os dados da sua conta são usados só para gerar o seu relatório. <a href="privacidade.html">Privacidade</a> · <a href="parceiros.html">Seja parceiro</a></footer>
 
 <script>
 const avisos = {
@@ -220,6 +220,10 @@ const avisos = {
 };
 const a = new URLSearchParams(location.search).get("aviso");
 if (a && avisos[a]) { const el = document.getElementById("aviso"); el.textContent = avisos[a]; el.style.display = "block"; }
+</script>
+<script>
+// indicação de parceiro: guarda o ?ref= e leva junto para o login do Mercado Livre
+(function(){try{var r=new URLSearchParams(location.search).get("ref");if(r)localStorage.setItem("anuncix-ref",r.toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,12));var g=localStorage.getItem("anuncix-ref");if(g)document.querySelectorAll('a[href*="/anuncix/start"]').forEach(function(a){a.href=a.href.split("?")[0]+"?ref="+g});}catch(e){}})();
 </script>
 </body>
 </html>
