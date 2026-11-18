@@ -41,15 +41,37 @@ p,li{max-width:40em}ul,ol{padding-left:1.3em}li{margin:6px 0}
 .more{list-style:none;padding:0;margin:0 0 40px}.more li{border-top:1px solid var(--line);padding:14px 0;margin:0}
 .more a{font-weight:700;text-decoration:none}.more span{display:block;color:var(--gray);font-size:16px}
 footer{padding-block:30px 50px;color:var(--gray);font-size:14px;border-top:1px solid var(--line)}
-@media(max-width:560px){.ex{grid-template-columns:1fr}.btn{display:block;text-align:center}body{font-size:17px}}</style>
+@media(max-width:560px){.ex{grid-template-columns:1fr}.btn{display:block;text-align:center}body{font-size:17px}}.bluetop .top{max-width:760px}
+
+/* ===== visual azul (igual a pagina inicial) ===== */
+.bluetop{background:#2B59FF;color:#fff;position:relative;overflow:hidden}
+.bluetop:before{content:"";position:absolute;width:720px;height:720px;border-radius:50%;background:rgba(255,255,255,.07);right:-260px;top:-300px;pointer-events:none}
+.bluetop>*{position:relative}
+.bluetop .bt-in{padding-bottom:64px}
+.bluetop h1,.bluetop h1 em{color:#fff}
+.bluetop .lead,.bluetop .promise,.bluetop .crumb,.bluetop .crumb a,.bluetop .facts span{color:#DCE5FF}
+.bluetop .facts strong{color:#fff}
+.bluetop .facts b{background:#fff;color:#2B59FF}
+.bluetop .promise li:before{color:#fff}
+.bluetop .btn{background:#fff;color:#2B59FF}
+.bleed{background:#2B59FF;color:#fff;box-shadow:0 0 0 100vmax #2B59FF;clip-path:inset(0 -100vmax)}
+.bluetop .mark,.bluetop .logo,.bleed .mark,.bleed .logo{color:#fff}
+.bluetop header a:not(.mark):not(.logo),.bleed a:not(.mark):not(.logo){color:#DCE5FF}
+.bluetop svg rect[fill="#2B59FF"],.bleed svg rect[fill="#2B59FF"]{fill:#fff}
+.bluetop svg path[stroke="#fff"],.bleed svg path[stroke="#fff"]{stroke:#2B59FF}
+header.bleed{margin-bottom:28px}
+footer.foot{background:#1D3FCC;color:#DCE5FF;box-shadow:0 0 0 100vmax #1D3FCC;clip-path:inset(0 -100vmax);border-top:0;margin-top:40px}
+footer.foot a{color:#fff;font-weight:700}
+</style>
 </head>
 <body>
-<header class="wrap top"><a class="mark" href="../"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2B59FF"/><path d="M10.5 10.5l11 11M21.5 10.5l-11 11" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="23" cy="23" r="3.2" fill="#FF6A2B"/></svg>Anuncix</a><a class="small" href="./">Guias</a></header>
-<main class="wrap">
-<p class="crumb"><a href="./">Guias</a></p>
-<article>
+<div class="bluetop"><header class="wrap top"><a class="mark" href="../"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2B59FF"/><path d="M10.5 10.5l11 11M21.5 10.5l-11 11" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="23" cy="23" r="3.2" fill="#FF6A2B"/></svg>Anuncix</a><a class="small" href="./">Guias</a></header>
+<div class="wrap bt-in"><p class="crumb"><a href="./">Guias</a></p>
 <h1>Como reduzir devoluções no Mercado Livre pelo anúncio</h1>
-<p class="lead">“Não é o que eu esperava” quase sempre quer dizer que o anúncio deixou espaço para o comprador imaginar outra coisa.</p>
+<p class="lead">“Não é o que eu esperava” quase sempre quer dizer que o anúncio deixou espaço para o comprador imaginar outra coisa.</p></div></div>
+<main class="wrap">
+<article>
+
 
 <h2>De onde vêm as devoluções</h2>
 <ul>
@@ -75,7 +97,7 @@ footer{padding-block:30px 50px;color:var(--gray);font-size:14px;border-top:1px s
 <h2>Outros guias</h2>
 <ul class="more"><li><a href="titulo-anuncio-mercado-livre.html">Como escrever o título do anúncio no Mercado Livre</a><span>Regras práticas para montar um título que aparece na busca do Mercado Livre: o que colocar, em que ordem e o que evitar.</span></li><li><a href="ficha-tecnica-mercado-livre.html">Ficha técnica no Mercado Livre: como preencher sem erro</a><span>Por que a ficha técnica do anúncio decide se você aparece nos filtros do Mercado Livre e como preencher marca, modelo e campos obrigatórios.</span></li><li><a href="fotos-anuncio-mercado-livre.html">Fotos do anúncio no Mercado Livre: quantas e quais tirar</a><span>Como montar as fotos de um anúncio no Mercado Livre para ganhar o clique na busca e responder as dúvidas antes da compra.</span></li><li><a href="descricao-anuncio-mercado-livre.html">Como escrever a descrição do anúncio no Mercado Livre</a><span>Um roteiro simples para a descrição do anúncio no Mercado Livre responder as dúvidas do comprador e evitar perguntas e devoluções.</span></li><li><a href="codigo-de-barras-gtin-mercado-livre.html">Código de barras (GTIN/EAN) no Mercado Livre: onde colocar</a><span>O que é o código de barras GTIN/EAN, onde ele vai no anúncio do Mercado Livre e o erro mais comum de colocá-lo no campo errado.</span></li><li><a href="anuncio-sem-visitas-mercado-livre.html">Anúncio sem visitas no Mercado Livre: 6 causas para checar</a><span>Seu anúncio no Mercado Livre não recebe visitas? Veja as causas mais comuns, do título à ficha técnica, e o que corrigir primeiro.</span></li></ul>
 </main>
-<footer class="wrap">Anuncix é uma ferramenta independente, sem vínculo com o Mercado Livre. <a href="../privacidade.html">Privacidade</a> · <a href="../parceiros.html">Seja parceiro</a></footer>
+<footer class="wrap foot">Anuncix é uma ferramenta independente, sem vínculo com o Mercado Livre. <a href="../privacidade.html">Privacidade</a> · <a href="../parceiros.html">Seja parceiro</a></footer>
 <script>(function(){try{var r=new URLSearchParams(location.search).get("ref");if(r)localStorage.setItem("anuncix-ref",r.toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,12));var g=localStorage.getItem("anuncix-ref");if(g)document.querySelectorAll('a[href*="/anuncix/start"]').forEach(function(a){a.href=a.href.split("?")[0]+"?ref="+g});}catch(e){}})();</script>
 </body>
 </html>
