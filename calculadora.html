@@ -97,17 +97,37 @@ footer a{font-weight:600}
 
 @media(max-width:900px){.calc{grid-template-columns:1fr}.res{position:static}}
 @media(max-width:520px){.grid{grid-template-columns:1fr}.card,.res{padding:18px;border-radius:20px}.big b{font-size:40px}.tabs{display:flex}.tabs button{flex:1;padding:10px 8px}}
+
+/* ===== visual azul (igual a pagina inicial) ===== */
+.bluetop{background:#2B59FF;color:#fff;position:relative;overflow:hidden}
+.bluetop:before{content:"";position:absolute;width:720px;height:720px;border-radius:50%;background:rgba(255,255,255,.07);right:-260px;top:-300px;pointer-events:none}
+.bluetop>*{position:relative}
+.bluetop .bt-in{padding-bottom:64px}
+.bluetop h1,.bluetop h1 em{color:#fff}
+.bluetop .lead,.bluetop .promise,.bluetop .crumb,.bluetop .crumb a,.bluetop .facts span{color:#DCE5FF}
+.bluetop .facts strong{color:#fff}
+.bluetop .facts b{background:#fff;color:#2B59FF}
+.bluetop .promise li:before{color:#fff}
+.bluetop .btn{background:#fff;color:#2B59FF}
+.bleed{background:#2B59FF;color:#fff;box-shadow:0 0 0 100vmax #2B59FF;clip-path:inset(0 -100vmax)}
+.bluetop .mark,.bluetop .logo,.bleed .mark,.bleed .logo{color:#fff}
+.bluetop header a:not(.mark):not(.logo),.bleed a:not(.mark):not(.logo){color:#DCE5FF}
+.bluetop svg rect[fill="#2B59FF"],.bleed svg rect[fill="#2B59FF"]{fill:#fff}
+.bluetop svg path[stroke="#fff"],.bleed svg path[stroke="#fff"]{stroke:#2B59FF}
+header.bleed{margin-bottom:28px}
+footer.foot{background:#1D3FCC;color:#DCE5FF;box-shadow:0 0 0 100vmax #1D3FCC;clip-path:inset(0 -100vmax);border-top:0;margin-top:40px}
+footer.foot a{color:#fff;font-weight:700}
 </style>
 </head>
 <body>
-<header class="wrap top">
+<div class="bluetop"><header class="wrap top">
   <a class="mark" href="./" aria-label="Anuncix, início"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2B59FF"/><path d="M10.5 10.5l11 11M21.5 10.5l-11 11" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="23" cy="23" r="3.2" fill="#FF6A2B"/></svg>anuncix</a>
   <a class="small" href="./">Raio-x grátis</a>
 </header>
-
+<div class="wrap bt-in"><h1>Calculadora de taxas do Mercado Livre</h1>
+<p class="lead">Veja quanto o Mercado Livre desconta, quanto cai na sua conta e quanto sobra de lucro. Ou diga a margem que você quer e descubra o preço certo.</p></div></div>
 <main class="wrap">
-  <h1>Calculadora de taxas do Mercado Livre</h1>
-  <p class="lead">Veja quanto o Mercado Livre desconta, quanto cai na sua conta e quanto sobra de lucro. Ou diga a margem que você quer e descubra o preço certo.</p>
+
 
   <div class="tabs" role="tablist">
     <button role="tab" aria-selected="true" data-modo="lucro">Quanto eu lucro</button>
@@ -215,7 +235,7 @@ footer a{font-weight:600}
   </section>
 </main>
 
-<footer class="wrap">Anuncix é uma ferramenta independente, sem vínculo com o Mercado Livre. Valores de referência, sujeitos a mudança pelo Mercado Livre. <a href="./">Raio-x grátis</a> · <a href="privacidade.html">Privacidade</a></footer>
+<footer class="wrap foot">Anuncix é uma ferramenta independente, sem vínculo com o Mercado Livre. Valores de referência, sujeitos a mudança pelo Mercado Livre. <a href="./">Raio-x grátis</a> · <a href="privacidade.html">Privacidade</a></footer>
 
 <script>
 // Custo de envio Coleta/Agência/Full abaixo de R$ 79 (reputação verde, produto novo, nov/2026)

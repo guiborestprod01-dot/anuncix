@@ -9,11 +9,32 @@ body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Robot
 .wrap{max-width:760px;margin:0 auto;padding:30px 18px 60px}
 h1{letter-spacing:-.02em}h2{font-size:19px;margin-top:28px}
 a{color:#14595a}
+.pv-top{padding:22px 18px!important}.pv-top .mark{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:22px;text-decoration:none;color:#fff}
+
+/* ===== visual azul (igual a pagina inicial) ===== */
+.bluetop{background:#2B59FF;color:#fff;position:relative;overflow:hidden}
+.bluetop:before{content:"";position:absolute;width:720px;height:720px;border-radius:50%;background:rgba(255,255,255,.07);right:-260px;top:-300px;pointer-events:none}
+.bluetop>*{position:relative}
+.bluetop .bt-in{padding-bottom:64px}
+.bluetop h1,.bluetop h1 em{color:#fff}
+.bluetop .lead,.bluetop .promise,.bluetop .crumb,.bluetop .crumb a,.bluetop .facts span{color:#DCE5FF}
+.bluetop .facts strong{color:#fff}
+.bluetop .facts b{background:#fff;color:#2B59FF}
+.bluetop .promise li:before{color:#fff}
+.bluetop .btn{background:#fff;color:#2B59FF}
+.bleed{background:#2B59FF;color:#fff;box-shadow:0 0 0 100vmax #2B59FF;clip-path:inset(0 -100vmax)}
+.bluetop .mark,.bluetop .logo,.bleed .mark,.bleed .logo{color:#fff}
+.bluetop header a:not(.mark):not(.logo),.bleed a:not(.mark):not(.logo){color:#DCE5FF}
+.bluetop svg rect[fill="#2B59FF"],.bleed svg rect[fill="#2B59FF"]{fill:#fff}
+.bluetop svg path[stroke="#fff"],.bleed svg path[stroke="#fff"]{stroke:#2B59FF}
+header.bleed{margin-bottom:28px}
+footer.foot{background:#1D3FCC;color:#DCE5FF;box-shadow:0 0 0 100vmax #1D3FCC;clip-path:inset(0 -100vmax);border-top:0;margin-top:40px}
+footer.foot a{color:#fff;font-weight:700}
 </style>
 </head>
 <body>
+<div class="bluetop"><div class="wrap pv-top"><a class="mark" href="./"><svg viewBox="0 0 32 32" aria-hidden="true" width="34" height="34"><rect width="32" height="32" rx="9" fill="#fff"/><path d="M10.5 10.5l11 11M21.5 10.5l-11 11" stroke="#2B59FF" stroke-width="3.6" stroke-linecap="round"/><circle cx="23" cy="23" r="3.2" fill="#FF6A2B"/></svg>Anuncix</a></div></div>
 <div class="wrap">
-<p><a href="./">← Anuncix</a></p>
 <h1>Política de privacidade</h1>
 <p>Atualizada em 10 de novembro de 2026.</p>
 <h2>O que o Anuncix acessa</h2>
