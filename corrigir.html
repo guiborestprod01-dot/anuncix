@@ -165,7 +165,7 @@ function mostrar() {
   escolhidos = new Set(props.map((p) => p.item_id));
   $("#app").innerHTML = `
     <h1>Confira as correções</h1>
-    <p class="lead">Nada muda no Mercado Livre até você confirmar. Desmarque o que não quiser.${dados.gratis ? ` Os ${dados.gratis} primeiros saem de graça.` : ""}${dados.creditos ? ` Você tem ${dados.creditos} ${dados.creditos === 1 ? "crédito" : "créditos"} guardados.` : ""}</p>
+    <p class="lead">Você vê o antes e depois e escolhe. Nada muda no seu anúncio sem você. Desmarque o que não quiser.${dados.gratis ? ` Os ${dados.gratis} primeiros saem de graça.` : ""}${dados.creditos ? ` Você tem ${dados.creditos} ${dados.creditos === 1 ? "crédito" : "créditos"} guardados.` : ""}</p>
     <div class="top"><span class="muted">${props.length} ${props.length === 1 ? "anúncio" : "anúncios"} com correção pronta</span><button class="sel" id="todos">Desmarcar todos</button></div>
     ${props.map((p) => `<label class="card it"><input type="checkbox" checked data-id="${esc(p.item_id)}">
       <div><h3>${esc(p.antes.titulo)}${p.antes.vendidos ? `<span class="tag">título travado</span>` : ""}</h3>${linhas(p.depois, p.antes)}</div></label>`).join("")}
