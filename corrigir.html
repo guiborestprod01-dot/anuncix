@@ -233,7 +233,7 @@ async function acompanhar(pid, primeiro) {
         <p class="muted"><b>Pix:</b> abra o app do seu banco e leia o QR Code, ou copie o código.</p>
         ${p.qr ? `<img alt="QR Code do Pix" src="data:image/png;base64,${p.qr}">` : ""}
         <div class="copy"><input readonly value="${esc(p.copia)}" aria-label="Código Pix copia e cola"><button id="cp">Copiar</button></div>
-        ${p.cartao ? `<p style="margin:18px 0 6px"><b>Prefere cartão de crédito?</b></p><p><a class="btn" href="${esc(p.cartao)}">Pagar com cartão</a></p><p class="muted" style="font-size:14px">Você paga na página segura do Mercado Pago e volta para cá.</p>` : ""}
+        ${p.cartao ? `<p style="margin:18px 0 6px"><b>Prefere cartão de crédito?</b></p><p><a class="btn" style="display:inline-block;text-decoration:none" href="${esc(p.cartao)}">Pagar com cartão</a></p><p class="muted" style="font-size:14px">Você paga na página segura do Mercado Pago e volta para cá.</p>` : ""}
         <p class="wait" role="status">Esperando o pagamento</p>
         <p class="muted" style="font-size:14px">Assim que o pagamento cair, as correções entram no Mercado Livre sozinhas. Pode deixar esta página aberta.</p></div>`;
       $("#cp").onclick = async () => { try { await navigator.clipboard.writeText(p.copia); $("#cp").textContent = "Copiado"; } catch { document.querySelector(".copy input").select(); } };
