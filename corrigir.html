@@ -205,7 +205,7 @@ function somar() {
   $("#fq").textContent = `${n} ${n === 1 ? "anúncio" : "anúncios"}${escolha !== "avulso" && resto ? `, pacote de ${dados.pacotes[escolha].creditos}` : ""}`;
   $("#fv").textContent = real(v);
   $("#go").disabled = !n;
-  $("#go").textContent = n && v === 0 ? "Corrigir agora" : "Pagar com Pix";
+  $("#go").textContent = n && v === 0 ? "Corrigir agora" : "Pagar (Pix ou cartão)";
   if ($("#todos")) $("#todos").textContent = n ? "Desmarcar todos" : "Marcar todos";
 }
 
@@ -229,12 +229,13 @@ async function acompanhar(pid, primeiro) {
 
   if (p.status === "aguardando") {
     if (!$("#pixbox")) {
-      $("#app").innerHTML = `<div class="card pix" id="pixbox"><h1>Pague ${real(p.valor)} com Pix</h1>
-        <p class="muted">Abra o app do seu banco e leia o QR Code, ou copie o código.</p>
+      $("#app").innerHTML = `<div class="card pix" id="pixbox"><h1>Pague ${real(p.valor)}</h1>
+        <p class="muted"><b>Pix:</b> abra o app do seu banco e leia o QR Code, ou copie o código.</p>
         ${p.qr ? `<img alt="QR Code do Pix" src="data:image/png;base64,${p.qr}">` : ""}
         <div class="copy"><input readonly value="${esc(p.copia)}" aria-label="Código Pix copia e cola"><button id="cp">Copiar</button></div>
+        ${p.cartao ? `<p style="margin:18px 0 6px"><b>Prefere cartão de crédito?</b></p><p><a class="btn" href="${esc(p.cartao)}">Pagar com cartão</a></p><p class="muted" style="font-size:14px">Você paga na página segura do Mercado Pago e volta para cá.</p>` : ""}
         <p class="wait" role="status">Esperando o pagamento</p>
-        <p class="muted" style="font-size:14px">Assim que o Pix cair, as correções entram no Mercado Livre sozinhas. Pode deixar esta página aberta.</p></div>`;
+        <p class="muted" style="font-size:14px">Assim que o pagamento cair, as correções entram no Mercado Livre sozinhas. Pode deixar esta página aberta.</p></div>`;
       $("#cp").onclick = async () => { try { await navigator.clipboard.writeText(p.copia); $("#cp").textContent = "Copiado"; } catch { document.querySelector(".copy input").select(); } };
     }
     return setTimeout(() => acompanhar(pid), 4000);
