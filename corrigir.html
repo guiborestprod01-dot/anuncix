@@ -130,7 +130,9 @@ function falha(msg) {
 async function iniciar() {
   if (!id) return falha("Link inválido. Abra a correção pelo seu relatório.");
   $("#voltar").href = `relatorio.html?id=${id}`;
-  const pend = guarda.get("anuncix-pedido-" + id);
+  // volta do Mercado Pago (até em outro navegador): o MP traz o id do pedido em external_reference
+  const er = q.get("external_reference") || "";
+  const pend = (/^[0-9a-f-]{36}$/.test(er) ? er : "") || guarda.get("anuncix-pedido-" + id);
   if (pend) return acompanhar(pend);
   try { await fetch(`${API}/propor`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) }); }
   catch { return falha("Sem conexão. Tente de novo em instantes."); }
@@ -242,7 +244,8 @@ async function acompanhar(pid, primeiro) {
   }
   if (p.status === "expirado" || p.status === "erro") {
     guarda.set("anuncix-pedido-" + id, "");
-    $("#app").innerHTML = `<div class="card load"><h1>O Pix venceu</h1><p class="muted">Nenhuma cobrança foi feita e nada mudou nos seus anúncios.</p><p><button class="btn" onclick="location.reload()">Gerar outro Pix</button></p></div>`;
+    const tit = p.status === "erro" ? "Não deu para gerar o pagamento" : "O prazo para pagar venceu";
+    $("#app").innerHTML = `<div class="card load"><h1>${tit}</h1><p class="muted">Nenhuma cobrança foi feita e nada mudou nos seus anúncios.</p><p><button class="btn" onclick="location.href='corrigir.html?id=${id}'">Tentar de novo</button></p></div>`;
     return;
   }
   if (p.status === "pago" || p.status === "aplicando") {
@@ -251,11 +254,13 @@ async function acompanhar(pid, primeiro) {
   }
   // aplicado
   guarda.set("anuncix-pedido-" + id, "");
-  const res = p.resultado || [], ok = res.filter((x) => x.ok), no = res.filter((x) => !x.ok);
+  const todos = Array.isArray(p.resultado) ? p.resultado : [];
+  const res = todos.filter((x) => x.item), ok = res.filter((x) => x.ok), no = res.filter((x) => !x.ok);
+  const devolvidos = (todos.find((x) => x.creditos_devolvidos) || {}).creditos_devolvidos || 0;
   $("#app").innerHTML = `<div class="card res"><h1>${ok.length ? "Pronto, anúncios corrigidos" : "Não deu para publicar"}</h1>
     <p class="muted">${ok.length} de ${res.length} ${res.length === 1 ? "anúncio corrigido" : "anúncios corrigidos"} no Mercado Livre. Pode levar alguns minutos para aparecer no anúncio.</p>
     <ul>${res.map((x) => `<li>${x.ok ? `<span class="ok">Corrigido</span> ${esc(x.item)}: ${esc((x.feito || []).join(", "))}` : `<span class="no">Não publicado</span> ${esc(x.item)}: o Mercado Livre recusou a mudança.`}</li>`).join("")}</ul>
-    ${no.length ? `<p class="muted">Nos anúncios recusados nada foi alterado.</p>` : ""}
+    ${no.length ? `<p class="muted">Nos anúncios recusados nada foi alterado.${devolvidos ? ` Devolvemos ${devolvidos} ${devolvidos === 1 ? "crédito" : "créditos"} para a sua conta: use quando quiser.` : ""}</p>` : ""}
     <p><a href="relatorio.html?id=${id}">Voltar ao relatório</a></p></div>`;
 }
 
