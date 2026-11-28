@@ -103,6 +103,8 @@ footer.foot a{color:#fff;font-weight:700}
 <script>
 const API = "https://pgxhfrkiitninpepppvb.supabase.co/functions/v1/anuncix";
 const id = new URLSearchParams(location.search).get("id") || "";
+// v15: guarda a chave do aparelho (vem no endereço depois de conectar) e tira do endereço
+(() => { const m = location.hash.match(/k=([0-9a-f-]{36})/); if (m && id) { try { localStorage.setItem("anuncix-chave-" + id, m[1]); } catch {} history.replaceState(null, "", location.pathname + location.search); } })();
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const cor = (n) => n >= 80 ? "var(--green)" : n >= 55 ? "#b7791f" : "var(--red)";

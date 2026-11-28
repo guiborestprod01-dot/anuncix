@@ -145,6 +145,7 @@ async function esperarPropostas() {
     dados = await (await fetch(`${API}/propostas?id=${id}`)).json();
   } catch { return setTimeout(esperarPropostas, 4000); }
   if (dados.erro) return falha(dados.erro);
+  if (dados.status === "erro") return falha("Não deu para preparar as correções agora. Recarregue a página para tentar de novo.");
   const total = dados.itens.length || 1, prontos = dados.itens.filter((i) => i.status !== "gerando").length;
   if ($("#pg")) $("#pg").style.width = Math.max(5, Math.round((prontos / total) * 100)) + "%";
   if (dados.status !== "pronto" && prontos < dados.itens.length) return setTimeout(esperarPropostas, 3000);
@@ -215,8 +216,9 @@ function somar() {
 $("#go").onclick = async () => {
   $("#go").disabled = true;
   try {
-    const r = await fetch(`${API}/pedido`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, itens: [...escolhidos], pacote: escolha === "avulso" ? null : escolha }) });
+    const r = await fetch(`${API}/pedido`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, chave: guarda.get("anuncix-chave-" + id) || "", itens: [...escolhidos], pacote: escolha === "avulso" ? null : escolha }) });
     const j = await r.json();
+    if (j.reconectar) { $("#foot").hidden = true; $("#app").innerHTML = `<div class="card load"><h1>Faça o raio-x neste aparelho</h1><p class="muted">${esc(j.erro)}</p><p><a class="btn" style="display:inline-block;text-decoration:none" href="https://pgxhfrkiitninpepppvb.supabase.co/functions/v1/anuncix/start">Fazer o raio-x grátis</a></p></div>`; return; }
     if (!r.ok) { alert(j.erro || "Não deu para continuar."); $("#go").disabled = false; return; }
     guarda.set("anuncix-pedido-" + id, j.pedido);
     acompanhar(j.pedido, j);
