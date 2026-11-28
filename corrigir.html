@@ -113,6 +113,7 @@ footer.foot a{color:#fff;font-weight:700}
 </div>
 
 <script>
+// v14 (28/11): pagamento por Pix ou cartão
 const API = "https://pgxhfrkiitninpepppvb.supabase.co/functions/v1/anuncix";
 const q = new URLSearchParams(location.search);
 const id = /^[0-9a-f-]{36}$/.test(q.get("id") || "") ? q.get("id") : "";
